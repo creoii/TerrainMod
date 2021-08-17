@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "terrain:block/green_cave_mushroom_block" }
+  }
+}

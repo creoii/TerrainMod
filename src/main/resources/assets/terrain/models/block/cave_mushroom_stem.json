@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "side": "terrain:block/cave_mushroom_stem",
+    "end": "terrain:block/cave_mushroom_stem_top"
+  }
+}

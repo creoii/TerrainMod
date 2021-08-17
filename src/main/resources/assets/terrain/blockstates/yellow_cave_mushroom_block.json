@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "terrain:block/yellow_cave_mushroom_block" }
+  }
+}

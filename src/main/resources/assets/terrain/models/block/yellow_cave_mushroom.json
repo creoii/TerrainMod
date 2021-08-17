@@ -1,0 +1,6 @@
+{
+  "parent": "terrain:block/cube_mushroom",
+  "textures": {
+    "cap": "terrain:block/yellow_cave_mushroom_block"
+  }
+}

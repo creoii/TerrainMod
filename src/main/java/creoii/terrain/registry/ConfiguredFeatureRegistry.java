@@ -1,0 +1,95 @@
+package creoii.terrain.registry;
+
+import com.google.common.collect.ImmutableList;
+import creoii.terrain.TerrainMod;
+import creoii.terrain.util.Decorators;
+import creoii.terrain.world.feature.BlockSpikeFeatureConfig;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.tag.BlockTags;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.collection.DataPool;
+import net.minecraft.util.math.VerticalSurfaceType;
+import net.minecraft.util.math.floatprovider.UniformFloatProvider;
+import net.minecraft.util.math.intprovider.ConstantIntProvider;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
+import net.minecraft.util.registry.BuiltinRegistries;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.world.gen.decorator.CaveSurfaceDecoratorConfig;
+import net.minecraft.world.gen.decorator.CountNoiseDecoratorConfig;
+import net.minecraft.world.gen.decorator.Decorator;
+import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
+import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
+import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
+import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
+import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
+
+public class ConfiguredFeatureRegistry {
+    public static final ConfiguredFeature<?, ?> BLANK = Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(new SimpleBlockStateProvider(Blocks.CAVE_AIR.getDefaultState())));
+
+    public static final ConfiguredFeature<?, ?> PATCH_RED_LOTUS = Feature.RANDOM_PATCH.configure(ConfiguredFeatures.Configs.GRASS_CONFIG).decorate(Decorators.SQUARE_HEIGHTMAP_SPREAD_DOUBLE).decorate(Decorator.COUNT_NOISE.configure(new CountNoiseDecoratorConfig(-0.8D, 5, 10)));
+
+    public static final ConfiguredFeature<TreeFeatureConfig, ?> SMALL_YELLOW_CAVE_MUSHROOM = Feature.TREE.configure(new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(BlockRegistry.CAVE_MUSHROOM_STEM.getDefaultState()), new StraightTrunkPlacer(3, 1, 0), new SimpleBlockStateProvider(BlockRegistry.YELLOW_CAVE_MUSHROOM_BLOCK.getDefaultState()), new SimpleBlockStateProvider(BlockRegistry.YELLOW_CAVE_MUSHROOM.getDefaultState()), new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 1), new TwoLayersFeatureSize(1, 0, 1)).dirtProvider(new SimpleBlockStateProvider(Blocks.GRASS_BLOCK.getDefaultState())).forceDirt().build());
+    public static final ConfiguredFeature<TreeFeatureConfig, ?> SMALL_PURPLE_CAVE_MUSHROOM = Feature.TREE.configure(new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(BlockRegistry.CAVE_MUSHROOM_STEM.getDefaultState()), new StraightTrunkPlacer(3, 1, 0), new SimpleBlockStateProvider(BlockRegistry.PURPLE_CAVE_MUSHROOM_BLOCK.getDefaultState()), new SimpleBlockStateProvider(BlockRegistry.PURPLE_CAVE_MUSHROOM.getDefaultState()), new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 1), new TwoLayersFeatureSize(1, 0, 1)).dirtProvider(new SimpleBlockStateProvider(Blocks.GRASS_BLOCK.getDefaultState())).forceDirt().build());
+    public static final ConfiguredFeature<TreeFeatureConfig, ?> SMALL_GREEN_CAVE_MUSHROOM = Feature.TREE.configure(new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(BlockRegistry.CAVE_MUSHROOM_STEM.getDefaultState()), new StraightTrunkPlacer(3, 1, 0), new SimpleBlockStateProvider(BlockRegistry.GREEN_CAVE_MUSHROOM_BLOCK.getDefaultState()), new SimpleBlockStateProvider(BlockRegistry.GREEN_CAVE_MUSHROOM.getDefaultState()), new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 1), new TwoLayersFeatureSize(1, 0, 1)).dirtProvider(new SimpleBlockStateProvider(Blocks.GRASS_BLOCK.getDefaultState())).forceDirt().build());
+    public static final ConfiguredFeature<TreeFeatureConfig, ?> SMALL_BLUE_CAVE_MUSHROOM = Feature.TREE.configure(new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(BlockRegistry.CAVE_MUSHROOM_STEM.getDefaultState()), new StraightTrunkPlacer(3, 1, 0), new SimpleBlockStateProvider(BlockRegistry.BLUE_CAVE_MUSHROOM_BLOCK.getDefaultState()), new SimpleBlockStateProvider(BlockRegistry.BLUE_CAVE_MUSHROOM.getDefaultState()), new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 1), new TwoLayersFeatureSize(1, 0, 1)).dirtProvider(new SimpleBlockStateProvider(Blocks.GRASS_BLOCK.getDefaultState())).forceDirt().build());
+    public static final ConfiguredFeature<TreeFeatureConfig, ?> LARGE_YELLOW_CAVE_MUSHROOM = Feature.TREE.configure(new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(BlockRegistry.CAVE_MUSHROOM_STEM.getDefaultState()), new StraightTrunkPlacer(5, 4, 3), new SimpleBlockStateProvider(BlockRegistry.YELLOW_CAVE_MUSHROOM_BLOCK.getDefaultState()), new SimpleBlockStateProvider(BlockRegistry.YELLOW_CAVE_MUSHROOM.getDefaultState()), new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 2), new TwoLayersFeatureSize(1, 0, 1)).dirtProvider(new SimpleBlockStateProvider(Blocks.GRASS_BLOCK.getDefaultState())).forceDirt().build());
+    public static final ConfiguredFeature<TreeFeatureConfig, ?> LARGE_PURPLE_CAVE_MUSHROOM = Feature.TREE.configure(new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(BlockRegistry.CAVE_MUSHROOM_STEM.getDefaultState()), new StraightTrunkPlacer(5, 4, 3), new SimpleBlockStateProvider(BlockRegistry.PURPLE_CAVE_MUSHROOM_BLOCK.getDefaultState()), new SimpleBlockStateProvider(BlockRegistry.PURPLE_CAVE_MUSHROOM.getDefaultState()), new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 2), new TwoLayersFeatureSize(1, 0, 1)).dirtProvider(new SimpleBlockStateProvider(Blocks.GRASS_BLOCK.getDefaultState())).forceDirt().build());
+    public static final ConfiguredFeature<TreeFeatureConfig, ?> LARGE_GREEN_CAVE_MUSHROOM = Feature.TREE.configure(new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(BlockRegistry.CAVE_MUSHROOM_STEM.getDefaultState()), new StraightTrunkPlacer(5, 4, 3), new SimpleBlockStateProvider(BlockRegistry.GREEN_CAVE_MUSHROOM_BLOCK.getDefaultState()), new SimpleBlockStateProvider(BlockRegistry.GREEN_CAVE_MUSHROOM.getDefaultState()), new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 2), new TwoLayersFeatureSize(1, 0, 1)).dirtProvider(new SimpleBlockStateProvider(Blocks.GRASS_BLOCK.getDefaultState())).forceDirt().build());
+    public static final ConfiguredFeature<TreeFeatureConfig, ?> LARGE_BLUE_CAVE_MUSHROOM = Feature.TREE.configure(new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(BlockRegistry.CAVE_MUSHROOM_STEM.getDefaultState()), new StraightTrunkPlacer(5, 4, 3), new SimpleBlockStateProvider(BlockRegistry.BLUE_CAVE_MUSHROOM_BLOCK.getDefaultState()), new SimpleBlockStateProvider(BlockRegistry.BLUE_CAVE_MUSHROOM.getDefaultState()), new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 2), new TwoLayersFeatureSize(1, 0, 1)).dirtProvider(new SimpleBlockStateProvider(Blocks.GRASS_BLOCK.getDefaultState())).forceDirt().build());
+    public static final ConfiguredFeature<?, ?> CAVE_MUSHROOM_VEGETATION = Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(new DataPool.Builder<BlockState>().add(BlockRegistry.YELLOW_CAVE_MUSHROOM.getDefaultState(), 1).add(BlockRegistry.PURPLE_CAVE_MUSHROOM.getDefaultState(), 1).add(BlockRegistry.GREEN_CAVE_MUSHROOM.getDefaultState(), 1).add(BlockRegistry.BLUE_CAVE_MUSHROOM.getDefaultState(), 1).build())));
+    public static final ConfiguredFeature<?, ?> MYCELIUM_PATCH = Feature.VEGETATION_PATCH.configure(new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE.getId(), new SimpleBlockStateProvider(Blocks.MYCELIUM.getDefaultState()), () -> CAVE_MUSHROOM_VEGETATION, VerticalSurfaceType.FLOOR, ConstantIntProvider.create(1), 0.0F, 5, 0.005F, UniformIntProvider.create(4, 7), 0.3F));
+    public static final ConfiguredFeature<?, ?> MUSHROOM_CAVES_VEGETATION = MYCELIUM_PATCH.decorate(Decorator.CAVE_SURFACE.configure(new CaveSurfaceDecoratorConfig(VerticalSurfaceType.FLOOR, 12))).range(Decorators.BOTTOM_TO_TOP_BELOW_120).spreadHorizontally().repeat(60);
+    public static final ConfiguredFeature<?, ?> MYCELIUM_WITH_YELLOW_CAVE_MUSHROOM = Feature.VEGETATION_PATCH.configure(new VegetationPatchFeatureConfig(BlockTags.LUSH_GROUND_REPLACEABLE.getId(), new SimpleBlockStateProvider(Blocks.MYCELIUM.getDefaultState()), () -> Feature.RANDOM_BOOLEAN_SELECTOR.configure(new RandomBooleanFeatureConfig(() -> SMALL_YELLOW_CAVE_MUSHROOM, () -> LARGE_YELLOW_CAVE_MUSHROOM)), VerticalSurfaceType.FLOOR, ConstantIntProvider.create(3), 0.8F, 2, 0.08F, UniformIntProvider.create(4, 7), 0.7F));
+    public static final ConfiguredFeature<?, ?> MYCELIUM_WITH_PURPLE_CAVE_MUSHROOM = Feature.VEGETATION_PATCH.configure(new VegetationPatchFeatureConfig(BlockTags.LUSH_GROUND_REPLACEABLE.getId(), new SimpleBlockStateProvider(Blocks.MYCELIUM.getDefaultState()), () -> Feature.RANDOM_BOOLEAN_SELECTOR.configure(new RandomBooleanFeatureConfig(() -> SMALL_PURPLE_CAVE_MUSHROOM, () -> LARGE_PURPLE_CAVE_MUSHROOM)), VerticalSurfaceType.FLOOR, ConstantIntProvider.create(3), 0.8F, 2, 0.08F, UniformIntProvider.create(4, 7), 0.7F));
+    public static final ConfiguredFeature<?, ?> MYCELIUM_WITH_GREEN_CAVE_MUSHROOM = Feature.VEGETATION_PATCH.configure(new VegetationPatchFeatureConfig(BlockTags.LUSH_GROUND_REPLACEABLE.getId(), new SimpleBlockStateProvider(Blocks.MYCELIUM.getDefaultState()), () -> Feature.RANDOM_BOOLEAN_SELECTOR.configure(new RandomBooleanFeatureConfig(() -> SMALL_GREEN_CAVE_MUSHROOM, () -> LARGE_GREEN_CAVE_MUSHROOM)), VerticalSurfaceType.FLOOR, ConstantIntProvider.create(3), 0.8F, 2, 0.08F, UniformIntProvider.create(4, 7), 0.7F));
+    public static final ConfiguredFeature<?, ?> MYCELIUM_WITH_BLUE_CAVE_MUSHROOM = Feature.VEGETATION_PATCH.configure(new VegetationPatchFeatureConfig(BlockTags.LUSH_GROUND_REPLACEABLE.getId(), new SimpleBlockStateProvider(Blocks.MYCELIUM.getDefaultState()), () -> Feature.RANDOM_BOOLEAN_SELECTOR.configure(new RandomBooleanFeatureConfig(() -> SMALL_BLUE_CAVE_MUSHROOM, () -> LARGE_BLUE_CAVE_MUSHROOM)), VerticalSurfaceType.FLOOR, ConstantIntProvider.create(3), 0.8F, 2, 0.08F, UniformIntProvider.create(4, 7), 0.7F));
+    public static final ConfiguredFeature<?, ?> MUSHROOM_CAVES_MUSHROOMS = Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(ImmutableList.of(new RandomFeatureEntry(MYCELIUM_WITH_YELLOW_CAVE_MUSHROOM, 0.25F), new RandomFeatureEntry(MYCELIUM_WITH_PURPLE_CAVE_MUSHROOM, 0.25F), new RandomFeatureEntry(MYCELIUM_WITH_GREEN_CAVE_MUSHROOM, 0.25F), new RandomFeatureEntry(MYCELIUM_WITH_BLUE_CAVE_MUSHROOM, 0.25F)), BLANK)).decorate(Decorator.CAVE_SURFACE.configure(new CaveSurfaceDecoratorConfig(VerticalSurfaceType.FLOOR, 12))).range(Decorators.BOTTOM_TO_TOP_BELOW_120).spreadHorizontally().repeat(30);
+
+    public static final ConfiguredFeature<?, ?> SNOW_VEGETATION = Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(new SimpleBlockStateProvider(Blocks.SNOW.getDefaultState())));
+    public static final ConfiguredFeature<?, ?> SNOW_PATCH = Feature.VEGETATION_PATCH.configure(new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE.getId(), new SimpleBlockStateProvider(Blocks.SNOW_BLOCK.getDefaultState()), () -> SNOW_VEGETATION, VerticalSurfaceType.FLOOR, ConstantIntProvider.create(1), 0.0F, 5, 0.5F, UniformIntProvider.create(4, 7), 0.3F));
+    public static final ConfiguredFeature<?, ?> SNOW_PATCH_CEILING = Feature.VEGETATION_PATCH.configure(new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE.getId(), new SimpleBlockStateProvider(Blocks.SNOW_BLOCK.getDefaultState()), () -> BLANK, VerticalSurfaceType.CEILING, UniformIntProvider.create(1, 2), 0.0F, 5, 0.0F, UniformIntProvider.create(4, 7), 0.3F));
+    public static final ConfiguredFeature<?, ?> FRIGID_CAVES_VEGETATION = SNOW_PATCH.decorate(Decorator.CAVE_SURFACE.configure(new CaveSurfaceDecoratorConfig(VerticalSurfaceType.FLOOR, 12))).range(Decorators.BOTTOM_TO_TOP_BELOW_120).spreadHorizontally().repeat(60);
+    public static final ConfiguredFeature<?, ?> FRIGID_CAVES_CEILING_VEGETATION = SNOW_PATCH_CEILING.decorate(Decorator.CAVE_SURFACE.configure(new CaveSurfaceDecoratorConfig(VerticalSurfaceType.CEILING, 12))).range(Decorators.BOTTOM_TO_TOP_BELOW_120).spreadHorizontally().repeat(60);
+    public static final ConfiguredFeature<?, ?> ICE_POOL = Feature.VEGETATION_PATCH.configure(new VegetationPatchFeatureConfig(BlockTags.LUSH_GROUND_REPLACEABLE.getId(), new SimpleBlockStateProvider(Blocks.ICE.getDefaultState()), () -> BLANK, VerticalSurfaceType.FLOOR, ConstantIntProvider.create(3), 0.8F, 2, 0.0F, UniformIntProvider.create(4, 7), 0.7F));
+    public static final ConfiguredFeature<?, ?> POWDER_SNOW_POOL = Feature.VEGETATION_PATCH.configure(new VegetationPatchFeatureConfig(BlockTags.LUSH_GROUND_REPLACEABLE.getId(), new SimpleBlockStateProvider(Blocks.POWDER_SNOW.getDefaultState()), () -> BLANK, VerticalSurfaceType.FLOOR, UniformIntProvider.create(1, 2), 0.1F, 1, 0.0F, UniformIntProvider.create(1, 3), 0.1F));
+    public static final ConfiguredFeature<?, ?> FRIGID_CAVES_ICE = Feature.RANDOM_BOOLEAN_SELECTOR.configure(new RandomBooleanFeatureConfig(() -> ICE_POOL, () -> POWDER_SNOW_POOL)).decorate(Decorator.CAVE_SURFACE.configure(new CaveSurfaceDecoratorConfig(VerticalSurfaceType.FLOOR, 12))).range(Decorators.BOTTOM_TO_TOP_BELOW_120).spreadHorizontally().repeat(30);
+    public static final ConfiguredFeature<?, ?> BLUE_ICE_STONE_BLOBS = Feature.NETHERRACK_REPLACE_BLOBS.configure(new ReplaceBlobsFeatureConfig(Blocks.STONE.getDefaultState(), Blocks.BLUE_ICE.getDefaultState(), UniformIntProvider.create(1, 3))).range(Decorators.BOTTOM_TO_TOP).spreadHorizontally().repeat(2);
+    public static final ConfiguredFeature<?, ?> BLUE_ICE_DEEPSLATE_BLOBS = Feature.NETHERRACK_REPLACE_BLOBS.configure(new ReplaceBlobsFeatureConfig(Blocks.DEEPSLATE.getDefaultState(), Blocks.BLUE_ICE.getDefaultState(), UniformIntProvider.create(1, 3))).range(Decorators.BOTTOM_TO_TOP).spreadHorizontally().repeat(2);
+    public static final ConfiguredFeature<?, ?> GIANT_ICE_SPIKE = FeatureRegistry.BLOCK_SPIKE.configure(new BlockSpikeFeatureConfig(new SimpleBlockStateProvider(Blocks.PACKED_ICE.getDefaultState()), 30, UniformIntProvider.create(4, 12), UniformFloatProvider.create(0.4F, 1.5F), 0.25F, UniformFloatProvider.create(0.1F, 0.33F), UniformFloatProvider.create(0.4F, 1.0F), UniformFloatProvider.create(0.0F, 0.5F), 4, 0.2F)).range(Decorators.BOTTOM_TO_TOP_BELOW_120).spreadHorizontally().repeat(UniformIntProvider.create(4, 20));
+
+    public static void register() {
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "blank"), BLANK);
+
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "small_yellow_cave_mushroom"), SMALL_YELLOW_CAVE_MUSHROOM);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "small_purple_cave_mushroom"), SMALL_PURPLE_CAVE_MUSHROOM);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "small_green_cave_mushroom"), SMALL_GREEN_CAVE_MUSHROOM);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "small_blue_cave_mushroom"), SMALL_BLUE_CAVE_MUSHROOM);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "large_yellow_cave_mushroom"), LARGE_YELLOW_CAVE_MUSHROOM);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "large_purple_cave_mushroom"), LARGE_PURPLE_CAVE_MUSHROOM);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "large_green_cave_mushroom"), LARGE_GREEN_CAVE_MUSHROOM);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "large_blue_cave_mushroom"), LARGE_BLUE_CAVE_MUSHROOM);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "patch_red_lotus"), PATCH_RED_LOTUS);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "mycelium_patch"), MYCELIUM_PATCH);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "mushroom_caves_vegetation"), MUSHROOM_CAVES_VEGETATION);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "mycelium_with_yellow_cave_mushroom"), MYCELIUM_WITH_YELLOW_CAVE_MUSHROOM);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "mycelium_with_purple_cave_mushroom"), MYCELIUM_WITH_PURPLE_CAVE_MUSHROOM);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "mycelium_with_green_cave_mushroom"), MYCELIUM_WITH_GREEN_CAVE_MUSHROOM);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "mycelium_with_blue_cave_mushroom"), MYCELIUM_WITH_BLUE_CAVE_MUSHROOM);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "mushroom_caves_mushrooms"), MUSHROOM_CAVES_MUSHROOMS);
+
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "snow_vegetation"), SNOW_VEGETATION);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "snow_patch"), SNOW_PATCH);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "snow_patch_ceiling"), SNOW_PATCH_CEILING);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "frigid_caves_vegetation"), FRIGID_CAVES_VEGETATION);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "frigid_caves_ceiling_vegetation"), FRIGID_CAVES_CEILING_VEGETATION);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "ice_pool"), ICE_POOL);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "powder_snow_pool"), POWDER_SNOW_POOL);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "frigid_caves_ice"), FRIGID_CAVES_ICE);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "blue_ice_stone_blobs"), BLUE_ICE_STONE_BLOBS);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "blue_ice_deepslate_blobs"), BLUE_ICE_DEEPSLATE_BLOBS);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "giant_ice_spike"), GIANT_ICE_SPIKE);
+    }
+}

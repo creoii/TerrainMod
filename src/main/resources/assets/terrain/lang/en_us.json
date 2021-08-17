@@ -1,0 +1,15 @@
+{
+  "block.terrain.red_lotus": "Red Lotus",
+  "block.terrain.cave_mushroom_stem": "Cave Mushroom Stem",
+  "block.terrain.yellow_cave_mushroom": "Yellow Cave Mushroom",
+  "block.terrain.purple_cave_mushroom": "Purple Cave Mushroom",
+  "block.terrain.green_cave_mushroom": "Green Cave Mushroom",
+  "block.terrain.blue cave_mushroom": "Blue Cave Mushroom",
+  "block.terrain.yellow_cave_mushroom_block": "Yellow Cave Mushroom Block",
+  "block.terrain.purple_cave_mushroom_block": "Purple Cave Mushroom Block",
+  "block.terrain.green_cave_mushroom_block": "Green Cave Mushroom Block",
+  "block.terrain.blue cave_mushroom_block": "Blue Cave Mushroom Block",
+
+  "biome.terrain.frigid_caves": "Frigid Caves",
+  "biome.terrain.mushroom_caves": "Mushroom Caves"
+}
