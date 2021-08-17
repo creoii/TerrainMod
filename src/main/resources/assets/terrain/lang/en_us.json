@@ -8,8 +8,11 @@
   "block.terrain.yellow_cave_mushroom_block": "Yellow Cave Mushroom Block",
   "block.terrain.purple_cave_mushroom_block": "Purple Cave Mushroom Block",
   "block.terrain.green_cave_mushroom_block": "Green Cave Mushroom Block",
-  "block.terrain.blue cave_mushroom_block": "Blue Cave Mushroom Block",
+  "block.terrain.blue_cave_mushroom_block": "Blue Cave Mushroom Block",
+  "block.terrain.lavarock": "Lavarock",
+  "block.terrain.molten_magma": "Molten Magma",
 
   "biome.terrain.frigid_caves": "Frigid Caves",
-  "biome.terrain.mushroom_caves": "Mushroom Caves"
+  "biome.terrain.mushroom_caves": "Mushroom Caves",
+  "biome.terrain.molten_caves": "Molten Caves"
 }

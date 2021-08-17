@@ -69,7 +69,7 @@ public class BlockSpikeFeature extends Feature<BlockSpikeFeatureConfig> {
     }
 
     private static DripstoneGenerator createGenerator(BlockPos pos, boolean isStalagmite, Random random, int scale, FloatProvider bluntness, FloatProvider heightScale) {
-        return new DripstoneGenerator(pos, isStalagmite, scale, (double)bluntness.get(random), (double)heightScale.get(random));
+        return new DripstoneGenerator(pos, isStalagmite, scale, bluntness.get(random), heightScale.get(random));
     }
 
     static final class DripstoneGenerator {
@@ -89,14 +89,6 @@ public class BlockSpikeFeature extends Feature<BlockSpikeFeatureConfig> {
 
         private int getBaseScale() {
             return this.scale(0.0F);
-        }
-
-        private int method_35361() {
-            return this.isStalagmite ? this.pos.getY() : this.pos.getY() - this.getBaseScale();
-        }
-
-        private int method_35362() {
-            return !this.isStalagmite ? this.pos.getY() : this.pos.getY() + this.getBaseScale();
         }
 
         boolean canGenerate(StructureWorldAccess world, WindModifier wind) {
@@ -128,6 +120,7 @@ public class BlockSpikeFeature extends Feature<BlockSpikeFeatureConfig> {
         }
 
         void generate(StructureWorldAccess world, Random random, WindModifier wind, BlockSpikeFeatureConfig config) {
+            BlockPos basePos = pos;
             for(int i = -this.scale; i <= this.scale; ++i) {
                 for(int j = -this.scale; j <= this.scale; ++j) {
                     float f = MathHelper.sqrt((float)(i * i + j * j));
@@ -145,7 +138,9 @@ public class BlockSpikeFeature extends Feature<BlockSpikeFeatureConfig> {
                                 BlockPos blockPos = wind.modify(mutable);
                                 if (canGenerateOrLava(world, blockPos)) {
                                     bl = true;
-                                    Block block = config.state.getBlockState(random, blockPos).getBlock();
+                                    Block block;
+                                    if (pos.getY() > basePos.getY() + (k * 0.8F)) block = config.tipState.getBlockState(random, blockPos).getBlock();
+                                    else block = config.state.getBlockState(random, blockPos).getBlock();
                                     world.setBlockState(blockPos, block.getDefaultState(), 2);
                                 } else if (bl && world.getBlockState(blockPos).isIn(BlockTags.BASE_STONE_OVERWORLD)) {
                                     break;
@@ -216,7 +211,7 @@ public class BlockSpikeFeature extends Feature<BlockSpikeFeatureConfig> {
             this.y = y;
             float f = wind.get(random);
             float g = MathHelper.nextBetween(random, 0.0F, 3.1415927F);
-            this.wind = new Vec3d(MathHelper.cos(g) * f, 0.0D, (double)(MathHelper.sin(g) * f));
+            this.wind = new Vec3d(MathHelper.cos(g) * f, 0.0D, MathHelper.sin(g) * f);
         }
 
         private WindModifier() {
@@ -233,7 +228,7 @@ public class BlockSpikeFeature extends Feature<BlockSpikeFeatureConfig> {
                 return pos;
             } else {
                 int i = this.y - pos.getY();
-                Vec3d vec3d = this.wind.multiply((double)i);
+                Vec3d vec3d = this.wind.multiply(i);
                 return pos.add(vec3d.x, 0.0D, vec3d.z);
             }
         }

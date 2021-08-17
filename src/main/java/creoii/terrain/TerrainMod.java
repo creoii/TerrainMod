@@ -1,9 +1,6 @@
 package creoii.terrain;
 
-import creoii.terrain.registry.BiomeRegistry;
-import creoii.terrain.registry.BlockRegistry;
-import creoii.terrain.registry.ConfiguredFeatureRegistry;
-import creoii.terrain.registry.FeatureRegistry;
+import creoii.terrain.registry.*;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 
@@ -15,6 +12,7 @@ public class TerrainMod implements ModInitializer, ClientModInitializer {
 		BlockRegistry.register();
 		FeatureRegistry.register();
 		ConfiguredFeatureRegistry.register();
+		ConfiguredSurfaceBuilderRegistry.register();
 		BiomeRegistry.register();
 	}
 
