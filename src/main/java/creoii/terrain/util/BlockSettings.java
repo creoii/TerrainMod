@@ -6,7 +6,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 
 public class BlockSettings {
-    public static final AbstractBlock.Settings MOLTEN_MAGMA = AbstractBlock.Settings.of(Material.STONE, MapColor.DARK_RED).strength(0.33F).luminance((state) -> 3).postProcess(BlockSettings::always).emissiveLighting(BlockSettings::always);
+    public static final AbstractBlock.Settings MOLTEN_MAGMA = AbstractBlock.Settings.of(Material.STONE, MapColor.DARK_RED).strength(0.33F).luminance((state) -> 3).postProcess(BlockSettings::always);
 
     public static AbstractBlock.Settings caveMushroom(MapColor color) {
         return AbstractBlock.Settings.of(Material.WOOD, color).strength(2.0F).sounds(BlockSoundGroup.NETHER_STEM);

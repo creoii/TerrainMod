@@ -85,9 +85,8 @@ public class BiomeCreator {
         DefaultBiomeFeatures.addDefaultDisks(builder2);
         DefaultBiomeFeatures.addDefaultMushrooms(builder2);
         builder2.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, ConfiguredFeatureRegistry.MOLTEN_SPIKE);
+        builder2.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, ConfiguredFeatureRegistry.SPARSE_MAGMA_DELTA);
         builder2.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, ConfiguredFeatureRegistry.SPARSE_DELTA);
-        builder2.feature(GenerationStep.Feature.UNDERGROUND_ORES, ConfiguredFeatureRegistry.MOLTEN_MAGMA_STONE_BLOBS);
-        builder2.feature(GenerationStep.Feature.UNDERGROUND_ORES, ConfiguredFeatureRegistry.MOLTEN_MAGMA_DEEPSLATE_BLOBS);
         builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatureRegistry.MOLTEN_CAVES_CEILING_VEGETATION);
         builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatureRegistry.MOLTEN_CAVES_VEGETATION);
 
