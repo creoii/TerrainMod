@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "side": "terrain:block/luminite",
+    "top": "terrain:block/crystalline_luminite",
+    "bottom": "terrain:block/luminite"
+  }
+}

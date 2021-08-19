@@ -13,9 +13,14 @@
   "block.terrain.molten_magma": "Molten Magma",
   "block.terrain.aridstone": "Aridstone",
   "block.terrain.quicksand": "Quicksand",
+  "block.terrain.luminite": "Luminite",
+  "block.terrain.crystalline_luminite": "Crystalline Luminite",
+  "block.terrain.crystal_block": "Crystal Block",
+  "block.terrain.crystal_flower": "Crystal Flower",
 
   "biome.terrain.frigid_caves": "Frigid Caves",
   "biome.terrain.mushroom_caves": "Mushroom Caves",
   "biome.terrain.molten_caves": "Molten Caves",
-  "biome.terrain.arid_caves": "Arid Caves"
+  "biome.terrain.arid_caves": "Arid Caves",
+  "biome.terrain.crystal_caves": "Crystal Caves"
 }

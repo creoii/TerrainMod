@@ -2,14 +2,17 @@ package creoii.terrain.registry;
 
 import com.google.common.collect.ImmutableList;
 import creoii.terrain.TerrainMod;
+import creoii.terrain.block.CrystalFlowerBlock;
 import creoii.terrain.util.Decorators;
 import creoii.terrain.world.feature.BlockSpikeFeatureConfig;
 import creoii.terrain.world.feature.RockFeatureConfig;
+import creoii.terrain.world.feature.TwoSimpleBlocksFeatureConfig;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DataPool;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.VerticalSurfaceType;
 import net.minecraft.util.math.floatprovider.UniformFloatProvider;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
@@ -73,7 +76,7 @@ public class ConfiguredFeatureRegistry {
     public static final ConfiguredFeature<?, ?> LAVAROCK_PATCH_CEILING = Feature.VEGETATION_PATCH.configure(new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE.getId(), new SimpleBlockStateProvider(BlockRegistry.LAVAROCK.getDefaultState()), () -> BLANK, VerticalSurfaceType.CEILING, UniformIntProvider.create(2, 3), 0.0F, 5, 0.002F, UniformIntProvider.create(2, 5), 0.3F));
     public static final ConfiguredFeature<?, ?> MOLTEN_CAVES_VEGETATION = LAVAROCK_PATCH.decorate(Decorator.CAVE_SURFACE.configure(new CaveSurfaceDecoratorConfig(VerticalSurfaceType.FLOOR, 12))).range(Decorators.BOTTOM_TO_TOP_BELOW_120).spreadHorizontally().repeat(60);
     public static final ConfiguredFeature<?, ?> MOLTEN_CAVES_CEILING_VEGETATION = LAVAROCK_PATCH_CEILING.decorate(Decorator.CAVE_SURFACE.configure(new CaveSurfaceDecoratorConfig(VerticalSurfaceType.CEILING, 12))).range(Decorators.BOTTOM_TO_TOP_BELOW_120).spreadHorizontally().repeat(60);
-    public static final ConfiguredFeature<?, ?> MOLTEN_SPIKE = FeatureRegistry.BLOCK_SPIKE.configure(new BlockSpikeFeatureConfig(new SimpleBlockStateProvider(Blocks.SMOOTH_BASALT.getDefaultState()), 30, UniformIntProvider.create(5, 9), UniformFloatProvider.create(0.4F, 1.2F), 0.25F, UniformFloatProvider.create(0.33F, 1.0F), UniformFloatProvider.create(0.33F, 1.0F), UniformFloatProvider.create(0.0F, 0.25F), 7, 0.5F)).range(Decorators.BOTTOM_TO_TOP_BELOW_120).spreadHorizontally().repeat(UniformIntProvider.create(16, 32));
+    public static final ConfiguredFeature<?, ?> LAVAROCK_SPIKE = FeatureRegistry.BLOCK_SPIKE.configure(new BlockSpikeFeatureConfig(new SimpleBlockStateProvider(Blocks.SMOOTH_BASALT.getDefaultState()), 30, UniformIntProvider.create(5, 9), UniformFloatProvider.create(0.4F, 1.2F), 0.25F, UniformFloatProvider.create(0.33F, 1.0F), UniformFloatProvider.create(0.33F, 1.0F), UniformFloatProvider.create(0.0F, 0.25F), 7, 0.5F)).range(Decorators.BOTTOM_TO_TOP_BELOW_120).spreadHorizontally().repeat(UniformIntProvider.create(16, 32));
     public static final ConfiguredFeature<?, ?> SPARSE_MAGMA_DELTA = Feature.DELTA_FEATURE.configure(new DeltaFeatureConfig(BlockRegistry.MOLTEN_MAGMA.getDefaultState(), Blocks.MAGMA_BLOCK.getDefaultState(), UniformIntProvider.create(3, 6), UniformIntProvider.create(0, 2))).decorate(Decorator.COUNT_MULTILAYER.configure(new CountConfig(24)).applyChance(8));
     public static final ConfiguredFeature<?, ?> SPARSE_DELTA = Feature.DELTA_FEATURE.configure(new DeltaFeatureConfig(Blocks.LAVA.getDefaultState(), Blocks.MAGMA_BLOCK.getDefaultState(), UniformIntProvider.create(4, 8), UniformIntProvider.create(1, 2))).decorate(Decorator.COUNT_MULTILAYER.configure(new CountConfig(20)).applyChance(5));
     public static final ConfiguredFeature<?, ?> PROTOTYPE_ORE_DIAMOND_EXTRA = Feature.ORE.configure(new OreFeatureConfig(ConfiguredFeatures.DIAMOND_ORE_TARGETS, 6, 0.5F)).triangleRange(YOffset.aboveBottom(-80), YOffset.aboveBottom(80)).spreadHorizontally().repeat(8);
@@ -90,6 +93,16 @@ public class ConfiguredFeatureRegistry {
     public static final ConfiguredFeature<?, ?> SAND_POOL = Feature.VEGETATION_PATCH.configure(new VegetationPatchFeatureConfig(BlockTags.LUSH_GROUND_REPLACEABLE.getId(), new SimpleBlockStateProvider(Blocks.SAND.getDefaultState()), () -> ARID_VEGETATION, VerticalSurfaceType.FLOOR, ConstantIntProvider.create(3), 0.8F, 2, 0.1F, UniformIntProvider.create(4, 7), 0.7F));
     public static final ConfiguredFeature<?, ?> QUICKSAND_POOL = Feature.VEGETATION_PATCH.configure(new VegetationPatchFeatureConfig(BlockTags.LUSH_GROUND_REPLACEABLE.getId(), new SimpleBlockStateProvider(BlockRegistry.QUICKSAND.getDefaultState()), () -> BLANK, VerticalSurfaceType.FLOOR, UniformIntProvider.create(1, 3), 0.1F, 1, 0.0F, UniformIntProvider.create(1, 2), 0.1F));
     public static final ConfiguredFeature<?, ?> ARID_CAVES_SAND = Feature.RANDOM_BOOLEAN_SELECTOR.configure(new RandomBooleanFeatureConfig(() -> SAND_POOL, () -> QUICKSAND_POOL)).decorate(Decorator.CAVE_SURFACE.configure(new CaveSurfaceDecoratorConfig(VerticalSurfaceType.FLOOR, 12))).range(Decorators.BOTTOM_TO_TOP_BELOW_120).spreadHorizontally().repeat(40);
+
+    public static final ConfiguredFeature<?, ?> CRYSTAL_VEGETATION = FeatureRegistry.SIMPLE_BLOCK_WITH_BASE.configure(new TwoSimpleBlocksFeatureConfig(new SimpleBlockStateProvider(BlockRegistry.CRYSTAL_FLOWER.getDefaultState()), new SimpleBlockStateProvider(BlockRegistry.CRYSTALLINE_LUMINITE.getDefaultState())));
+    public static final ConfiguredFeature<?, ?> CRYSTAL_CEILING_VEGETATION = Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(new SimpleBlockStateProvider(BlockRegistry.CRYSTAL_FLOWER.getDefaultState().with(CrystalFlowerBlock.FACING, Direction.DOWN))));
+    public static final ConfiguredFeature<?, ?> LUMINITE_PATCH = Feature.VEGETATION_PATCH.configure(new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE.getId(), new SimpleBlockStateProvider(BlockRegistry.LUMINITE.getDefaultState()), () -> CRYSTAL_VEGETATION, VerticalSurfaceType.FLOOR, UniformIntProvider.create(2, 3), 0.0F, 5, 0.02F, UniformIntProvider.create(2, 5), 0.3F));
+    public static final ConfiguredFeature<?, ?> LUMINITE_PATCH_CEILING = Feature.VEGETATION_PATCH.configure(new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE.getId(), new SimpleBlockStateProvider(BlockRegistry.LUMINITE.getDefaultState()), () -> CRYSTAL_CEILING_VEGETATION, VerticalSurfaceType.CEILING, UniformIntProvider.create(2, 3), 0.0F, 5, 0.02F, UniformIntProvider.create(2, 5), 0.3F));
+    public static final ConfiguredFeature<?, ?> CRYSTAL_CAVES_VEGETATION = LUMINITE_PATCH.decorate(Decorator.CAVE_SURFACE.configure(new CaveSurfaceDecoratorConfig(VerticalSurfaceType.FLOOR, 16))).range(Decorators.BOTTOM_TO_TOP_BELOW_120).spreadHorizontally().repeat(60);
+    public static final ConfiguredFeature<?, ?> CRYSTAL_CAVES_CEILING_VEGETATION = LUMINITE_PATCH_CEILING.decorate(Decorator.CAVE_SURFACE.configure(new CaveSurfaceDecoratorConfig(VerticalSurfaceType.CEILING, 16))).range(Decorators.BOTTOM_TO_TOP_BELOW_120).spreadHorizontally().repeat(60);
+    public static final ConfiguredFeature<?, ?> CRYSTAL_BLOCK_POOL = Feature.VEGETATION_PATCH.configure(new VegetationPatchFeatureConfig(BlockTags.LUSH_GROUND_REPLACEABLE.getId(), new SimpleBlockStateProvider(BlockRegistry.CRYSTAL_BLOCK.getDefaultState()), () -> CRYSTAL_VEGETATION, VerticalSurfaceType.FLOOR, ConstantIntProvider.create(3), 0.8F, 2, 0.033F, UniformIntProvider.create(4, 7), 0.7F)).decorate(Decorator.CAVE_SURFACE.configure(new CaveSurfaceDecoratorConfig(VerticalSurfaceType.FLOOR, 12))).range(Decorators.BOTTOM_TO_TOP_BELOW_120).spreadHorizontally().repeat(20);
+    public static final ConfiguredFeature<?, ?> GIANT_CRYSTAL_SPIKE = FeatureRegistry.BLOCK_SPIKE.configure(new BlockSpikeFeatureConfig(new SimpleBlockStateProvider(BlockRegistry.CRYSTAL_BLOCK.getDefaultState()), 48, UniformIntProvider.create(4, 15), UniformFloatProvider.create(0.4F, 1.5F), 0.25F, UniformFloatProvider.create(0.2F, 0.4F), UniformFloatProvider.create(0.2F, 0.4F), UniformFloatProvider.create(0.2F, 0.8F), 4, 0.2F)).range(Decorators.BOTTOM_TO_TOP_BELOW_120).spreadHorizontally().repeat(UniformIntProvider.create(8, 24));
+    public static final ConfiguredFeature<?, ?> DENSE_AMETHYST_GEODE = Feature.GEODE.configure(new GeodeFeatureConfig(new GeodeLayerConfig(new SimpleBlockStateProvider(Blocks.AIR.getDefaultState()), new SimpleBlockStateProvider(Blocks.AMETHYST_BLOCK.getDefaultState()), new SimpleBlockStateProvider(Blocks.BUDDING_AMETHYST.getDefaultState()), new SimpleBlockStateProvider(Blocks.CALCITE.getDefaultState()), new SimpleBlockStateProvider(Blocks.SMOOTH_BASALT.getDefaultState()), ImmutableList.of(Blocks.SMALL_AMETHYST_BUD.getDefaultState(), Blocks.MEDIUM_AMETHYST_BUD.getDefaultState(), Blocks.LARGE_AMETHYST_BUD.getDefaultState(), Blocks.AMETHYST_CLUSTER.getDefaultState()), BlockTags.FEATURES_CANNOT_REPLACE.getId(), BlockTags.GEODE_INVALID_BLOCKS.getId()), new GeodeLayerThicknessConfig(1.7D, 2.2D, 3.2D, 4.2D), new GeodeCrackConfig(0.95D, 2.0D, 2), 0.35D, 0.083D, true, UniformIntProvider.create(4, 6), UniformIntProvider.create(3, 4), UniformIntProvider.create(1, 2), -16, 16, 0.05D, 1)).uniformRange(YOffset.aboveBottom(6), YOffset.fixed(46)).spreadHorizontally().applyChance(37);
 
     public static void register() {
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "blank"), BLANK);
@@ -127,7 +140,7 @@ public class ConfiguredFeatureRegistry {
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "lavarock_patch_ceiling"), LAVAROCK_PATCH_CEILING);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "molten_caves_vegetation"), MOLTEN_CAVES_VEGETATION);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "molten_caves_ceiling_vegetation"), MOLTEN_CAVES_CEILING_VEGETATION);
-        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "molten_spike"), MOLTEN_SPIKE);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "lavarock_spike"), LAVAROCK_SPIKE);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "sparse_small_basalt_columns"), SPARSE_SMALL_BASALT_COLUMNS);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "sparse_large_basalt_columns"), SPARSE_LARGE_BASALT_COLUMNS);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "sparse_magma_delta"), SPARSE_MAGMA_DELTA);
@@ -146,5 +159,13 @@ public class ConfiguredFeatureRegistry {
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "sand_pool"), SAND_POOL);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "quicksand_pool"), QUICKSAND_POOL);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "arid_caves_sand"), ARID_CAVES_SAND);
+
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "luminite_patch"), LUMINITE_PATCH);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "luminite_patch_ceiling"), LUMINITE_PATCH_CEILING);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "crystal_caves_vegetation"), CRYSTAL_CAVES_VEGETATION);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "crystal_caves_ceiling_vegetation"), CRYSTAL_CAVES_CEILING_VEGETATION);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "crystal_block_pool"), CRYSTAL_BLOCK_POOL);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "giant_crystal_spike"), GIANT_CRYSTAL_SPIKE);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "dense_amethyst_geode"), DENSE_AMETHYST_GEODE);
     }
 }

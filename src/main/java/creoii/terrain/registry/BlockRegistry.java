@@ -30,7 +30,11 @@ public class BlockRegistry {
     public static final Block LAVAROCK = new Block(AbstractBlock.Settings.copy(Blocks.STONE).mapColor(MapColor.BLACK));
     public static final Block MOLTEN_MAGMA = new MoltenMagmaBlock(BlockSettings.MOLTEN_MAGMA);
     public static final Block ARIDSTONE = new Block(AbstractBlock.Settings.copy(Blocks.STONE).mapColor(MapColor.DIRT_BROWN));
-    public static final Block QUICKSAND = new QuicksandBlock(AbstractBlock.Settings.copy(Blocks.SAND).strength(0.75F, 0.5F).mapColor(MapColor.OAK_TAN));
+    public static final Block QUICKSAND = new QuicksandBlock(BlockSettings.QUICKSAND);
+    public static final Block CRYSTAL_BLOCK = new Block(AbstractBlock.Settings.copy(Blocks.AMETHYST_BLOCK).mapColor(MapColor.WHITE).luminance((state) -> 3));
+    public static final Block CRYSTAL_FLOWER = new CrystalFlowerBlock(AbstractBlock.Settings.copy(Blocks.AMETHYST_CLUSTER));
+    public static final Block LUMINITE = new LuminiteBlock(BlockSettings.LUMINITE);
+    public static final Block CRYSTALLINE_LUMINITE = new LuminiteBlock(BlockSettings.CRYSTALLINE_LUMINITE);
 
     public static void register() {
         createBlock("red_lotus", RED_LOTUS, ItemGroup.DECORATIONS);
@@ -47,12 +51,17 @@ public class BlockRegistry {
         createBlock("molten_magma", MOLTEN_MAGMA, ItemGroup.DECORATIONS);
         createBlock("aridstone", ARIDSTONE, ItemGroup.BUILDING_BLOCKS);
         createBlock("quicksand", QUICKSAND, ItemGroup.DECORATIONS);
+        createBlock("crystal_block", CRYSTAL_BLOCK, ItemGroup.BUILDING_BLOCKS);
+        createBlock("crystal_flower", CRYSTAL_FLOWER, ItemGroup.DECORATIONS);
+        createBlock("luminite", LUMINITE, ItemGroup.BUILDING_BLOCKS);
+        createBlock("crystalline_luminite", CRYSTALLINE_LUMINITE, ItemGroup.BUILDING_BLOCKS);
     }
 
     @Environment(EnvType.CLIENT)
     public static void registerClient() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
-                RED_LOTUS
+                RED_LOTUS,
+                CRYSTAL_FLOWER
         );
     }
 

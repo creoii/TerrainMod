@@ -14,5 +14,4 @@ public record RockFeatureConfig(BlockState state, IntProvider size) implements F
             return config.size;
         })).apply(instance, RockFeatureConfig::new);
     });
-
 }

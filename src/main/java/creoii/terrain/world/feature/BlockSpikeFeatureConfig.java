@@ -31,5 +31,4 @@ public record BlockSpikeFeatureConfig(BlockStateProvider state, int floorToCeili
             return blockSpikeFeatureConfig.minBluntnessForWind;
         })).apply(instance, BlockSpikeFeatureConfig::new);
     });
-
 }

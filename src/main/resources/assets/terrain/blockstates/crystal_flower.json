@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "terrain:block/crystal_flower",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "terrain:block/crystal_flower",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "terrain:block/crystal_flower",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "terrain:block/crystal_flower",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "terrain:block/crystal_flower"
+    },
+    "facing=west": {
+      "model": "terrain:block/crystal_flower",
+      "x": 90,
+      "y": 270
+    }
+  }
+}
