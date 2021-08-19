@@ -29,6 +29,8 @@ public class BlockRegistry {
     public static final Block BLUE_CAVE_MUSHROOM_BLOCK = new Block(BlockSettings.caveMushroom(MapColor.BLUE));
     public static final Block LAVAROCK = new Block(AbstractBlock.Settings.copy(Blocks.STONE).mapColor(MapColor.BLACK));
     public static final Block MOLTEN_MAGMA = new MoltenMagmaBlock(BlockSettings.MOLTEN_MAGMA);
+    public static final Block ARIDSTONE = new Block(AbstractBlock.Settings.copy(Blocks.STONE).mapColor(MapColor.DIRT_BROWN));
+    public static final Block QUICKSAND = new QuicksandBlock(AbstractBlock.Settings.copy(Blocks.SAND).strength(0.75F, 0.5F).mapColor(MapColor.OAK_TAN));
 
     public static void register() {
         createBlock("red_lotus", RED_LOTUS, ItemGroup.DECORATIONS);
@@ -43,6 +45,8 @@ public class BlockRegistry {
         createBlock("blue_cave_mushroom_block", BLUE_CAVE_MUSHROOM_BLOCK, ItemGroup.BUILDING_BLOCKS);
         createBlock("lavarock", LAVAROCK, ItemGroup.BUILDING_BLOCKS);
         createBlock("molten_magma", MOLTEN_MAGMA, ItemGroup.DECORATIONS);
+        createBlock("aridstone", ARIDSTONE, ItemGroup.BUILDING_BLOCKS);
+        createBlock("quicksand", QUICKSAND, ItemGroup.DECORATIONS);
     }
 
     @Environment(EnvType.CLIENT)

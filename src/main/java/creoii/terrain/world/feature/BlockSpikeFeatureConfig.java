@@ -7,12 +7,10 @@ import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 
-public class BlockSpikeFeatureConfig implements FeatureConfig {
+public record BlockSpikeFeatureConfig(BlockStateProvider state, int floorToCeilingSearchRange, IntProvider columnRadius, FloatProvider heightScale, float maxColumnRadiusToCaveHeightRatio, FloatProvider stalactiteBluntness, FloatProvider stalagmiteBluntness, FloatProvider windSpeed, int minRadiusForWind, float minBluntnessForWind) implements FeatureConfig {
     public static final Codec<BlockSpikeFeatureConfig> CODEC = RecordCodecBuilder.create((instance) -> {
         return instance.group(BlockStateProvider.TYPE_CODEC.fieldOf("state").forGetter((blockSpikeFeatureConfig) -> {
             return blockSpikeFeatureConfig.state;
-        }), BlockStateProvider.TYPE_CODEC.fieldOf("tip_state").forGetter((blockSpikeFeatureConfig) -> {
-            return blockSpikeFeatureConfig.tipState;
         }), Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter((blockSpikeFeatureConfig) -> {
             return blockSpikeFeatureConfig.floorToCeilingSearchRange;
         }), IntProvider.createValidatingCodec(1, 60).fieldOf("column_radius").forGetter((blockSpikeFeatureConfig) -> {
@@ -33,29 +31,5 @@ public class BlockSpikeFeatureConfig implements FeatureConfig {
             return blockSpikeFeatureConfig.minBluntnessForWind;
         })).apply(instance, BlockSpikeFeatureConfig::new);
     });
-    public final BlockStateProvider state;
-    public final BlockStateProvider tipState;
-    public final int floorToCeilingSearchRange;
-    public final IntProvider columnRadius;
-    public final FloatProvider heightScale;
-    public final float maxColumnRadiusToCaveHeightRatio;
-    public final FloatProvider stalactiteBluntness;
-    public final FloatProvider stalagmiteBluntness;
-    public final FloatProvider windSpeed;
-    public final int minRadiusForWind;
-    public final float minBluntnessForWind;
 
-    public BlockSpikeFeatureConfig(BlockStateProvider state, BlockStateProvider tipState, int floorToCeilingSearchRange, IntProvider columnRadius, FloatProvider heightScale, float maxColumnRadiusToCaveHeightRatio, FloatProvider stalactiteBluntness, FloatProvider stalagmiteBluntness, FloatProvider windSpeed, int minRadiusForWind, float minBluntnessForWind) {
-        this.state = state;
-        this.tipState = tipState;
-        this.floorToCeilingSearchRange = floorToCeilingSearchRange;
-        this.columnRadius = columnRadius;
-        this.heightScale = heightScale;
-        this.maxColumnRadiusToCaveHeightRatio = maxColumnRadiusToCaveHeightRatio;
-        this.stalactiteBluntness = stalactiteBluntness;
-        this.stalagmiteBluntness = stalagmiteBluntness;
-        this.windSpeed = windSpeed;
-        this.minRadiusForWind = minRadiusForWind;
-        this.minBluntnessForWind = minBluntnessForWind;
-    }
 }

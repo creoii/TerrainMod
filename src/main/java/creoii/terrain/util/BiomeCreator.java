@@ -2,7 +2,6 @@ package creoii.terrain.util;
 
 import creoii.terrain.registry.ConfiguredFeatureRegistry;
 import creoii.terrain.registry.ConfiguredSurfaceBuilderRegistry;
-import creoii.terrain.registry.FeatureRegistry;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.math.MathHelper;
@@ -21,8 +20,8 @@ public class BiomeCreator {
         DefaultBiomeFeatures.addBatsAndMonsters(builder);
         DefaultBiomeFeatures.addSnowyMobs(builder);
 
-        GenerationSettings.Builder builder2 = (new GenerationSettings.Builder()).surfaceBuilder(ConfiguredSurfaceBuilders.GRASS);
-        builder2.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL);
+        GenerationSettings.Builder builder2 = new GenerationSettings.Builder().surfaceBuilder(ConfiguredSurfaceBuilders.GRASS);
+        builder2.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL_MOUNTAIN);
         DefaultBiomeFeatures.addDefaultUndergroundStructures(builder2);
         DefaultBiomeFeatures.addLandCarvers(builder2);
         DefaultBiomeFeatures.addDefaultLakes(builder2);
@@ -41,7 +40,7 @@ public class BiomeCreator {
 
         float sky = MathHelper.clamp(0.0F / 3.0F, -1.0F, 1.0F);
         int skyColor = MathHelper.hsvToRgb(0.62222224F - sky * 0.05F, 0.5F + sky * 0.1F, 1.0F);
-        return new Biome.Builder().precipitation(Biome.Precipitation.SNOW).category(Biome.Category.UNDERGROUND).temperature(0.0F).downfall(0.5F).effects((new BiomeEffects.Builder()).waterColor(4159204).waterFogColor(329011).fogColor(12638463).skyColor(skyColor).build()).spawnSettings(builder.build()).generationSettings(builder2.build()).build();
+        return new Biome.Builder().precipitation(Biome.Precipitation.SNOW).category(Biome.Category.UNDERGROUND).temperature(0.0F).downfall(0.5F).effects(new BiomeEffects.Builder().waterColor(4159204).waterFogColor(329011).fogColor(12638463).skyColor(skyColor).build()).spawnSettings(builder.build()).generationSettings(builder2.build()).build();
     }
 
     public static Biome createMushroomCaves() {
@@ -50,7 +49,7 @@ public class BiomeCreator {
         builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.MOOSHROOM, 8, 4, 8));
         DefaultBiomeFeatures.addBatsAndMonsters(builder);
 
-        GenerationSettings.Builder builder2 = (new GenerationSettings.Builder()).surfaceBuilder(ConfiguredSurfaceBuilders.MYCELIUM);
+        GenerationSettings.Builder builder2 = new GenerationSettings.Builder().surfaceBuilder(ConfiguredSurfaceBuilders.MYCELIUM);
         builder2.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL);
         DefaultBiomeFeatures.addDefaultUndergroundStructures(builder2);
         DefaultBiomeFeatures.addLandCarvers(builder2);
@@ -66,15 +65,15 @@ public class BiomeCreator {
 
         float sky = MathHelper.clamp(0.0F / 3.0F, -1.0F, 1.0F);
         int skyColor = MathHelper.hsvToRgb(0.62222224F - sky * 0.05F, 0.5F + sky * 0.1F, 1.0F);
-        return new Biome.Builder().precipitation(Biome.Precipitation.RAIN).category(Biome.Category.UNDERGROUND).temperature(0.5F).downfall(0.5F).effects((new net.minecraft.world.biome.BiomeEffects.Builder()).waterColor(4159204).waterFogColor(329011).fogColor(12638463).skyColor(skyColor).build()).spawnSettings(builder.build()).generationSettings(builder2.build()).build();
+        return new Biome.Builder().precipitation(Biome.Precipitation.RAIN).category(Biome.Category.UNDERGROUND).temperature(0.5F).downfall(0.5F).effects(new BiomeEffects.Builder().waterColor(4159204).waterFogColor(329011).fogColor(12638463).skyColor(skyColor).build()).spawnSettings(builder.build()).generationSettings(builder2.build()).build();
     }
 
     public static Biome createMoltenCaves() {
         SpawnSettings.Builder builder = new SpawnSettings.Builder();
         DefaultBiomeFeatures.addBatsAndMonsters(builder);
 
-        GenerationSettings.Builder builder2 = (new GenerationSettings.Builder()).surfaceBuilder(ConfiguredSurfaceBuilderRegistry.MOLTEN_CAVES);
-        builder2.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL);
+        GenerationSettings.Builder builder2 = new GenerationSettings.Builder().surfaceBuilder(ConfiguredSurfaceBuilderRegistry.MOLTEN_CAVES);
+        builder2.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL_NETHER);
         DefaultBiomeFeatures.addDefaultUndergroundStructures(builder2);
         DefaultBiomeFeatures.addLandCarvers(builder2);
         DefaultBiomeFeatures.addDefaultLakes(builder2);
@@ -92,6 +91,30 @@ public class BiomeCreator {
 
         float sky = MathHelper.clamp(0.0F / 3.0F, -1.0F, 1.0F);
         int skyColor = MathHelper.hsvToRgb(0.62222224F - sky * 0.05F, 0.5F + sky * 0.1F, 1.0F);
-        return new Biome.Builder().precipitation(Biome.Precipitation.RAIN).category(Biome.Category.UNDERGROUND).temperature(0.5F).downfall(0.5F).effects((new net.minecraft.world.biome.BiomeEffects.Builder()).waterColor(4159204).waterFogColor(329011).fogColor(12638463).skyColor(skyColor).build()).spawnSettings(builder.build()).generationSettings(builder2.build()).build();
+        return new Biome.Builder().precipitation(Biome.Precipitation.RAIN).category(Biome.Category.UNDERGROUND).temperature(2.0F).downfall(0.0F).effects(new BiomeEffects.Builder().waterColor(4159204).waterFogColor(329011).fogColor(12638463).skyColor(skyColor).build()).spawnSettings(builder.build()).generationSettings(builder2.build()).build();
+    }
+
+    public static Biome createAridCaves() {
+        SpawnSettings.Builder builder = new SpawnSettings.Builder();
+        DefaultBiomeFeatures.addDesertMobs(builder);
+
+        GenerationSettings.Builder builder2 = new GenerationSettings.Builder().surfaceBuilder(ConfiguredSurfaceBuilders.DESERT);
+        builder2.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL_DESERT);
+        DefaultBiomeFeatures.addDefaultUndergroundStructures(builder2);
+        DefaultBiomeFeatures.addLandCarvers(builder2);
+        DefaultBiomeFeatures.addDefaultLakes(builder2);
+        DefaultBiomeFeatures.addAmethystGeodes(builder2);
+        DefaultBiomeFeatures.addDungeons(builder2);
+        DefaultBiomeFeatures.addMineables(builder2);
+        DefaultBiomeFeatures.addDefaultOres(builder2, false);
+        DefaultBiomeFeatures.addDefaultDisks(builder2);
+        DefaultBiomeFeatures.addDefaultMushrooms(builder2);
+        builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatureRegistry.ARID_CAVES_CEILING_VEGETATION);
+        builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatureRegistry.ARID_CAVES_SAND);
+        builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatureRegistry.ARID_CAVES_VEGETATION);
+
+        float sky = MathHelper.clamp(0.0F / 3.0F, -1.0F, 1.0F);
+        int skyColor = MathHelper.hsvToRgb(0.62222224F - sky * 0.05F, 0.5F + sky * 0.1F, 1.0F);
+        return new Biome.Builder().precipitation(Biome.Precipitation.RAIN).category(Biome.Category.UNDERGROUND).temperature(2.0F).downfall(0.0F).effects(new BiomeEffects.Builder().waterColor(4159204).waterFogColor(329011).fogColor(12638463).skyColor(skyColor).build()).spawnSettings(builder.build()).generationSettings(builder2.build()).build();
     }
 }

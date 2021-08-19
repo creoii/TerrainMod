@@ -11,8 +11,11 @@
   "block.terrain.blue_cave_mushroom_block": "Blue Cave Mushroom Block",
   "block.terrain.lavarock": "Lavarock",
   "block.terrain.molten_magma": "Molten Magma",
+  "block.terrain.aridstone": "Aridstone",
+  "block.terrain.quicksand": "Quicksand",
 
   "biome.terrain.frigid_caves": "Frigid Caves",
   "biome.terrain.mushroom_caves": "Mushroom Caves",
-  "biome.terrain.molten_caves": "Molten Caves"
+  "biome.terrain.molten_caves": "Molten Caves",
+  "biome.terrain.arid_caves": "Arid Caves"
 }

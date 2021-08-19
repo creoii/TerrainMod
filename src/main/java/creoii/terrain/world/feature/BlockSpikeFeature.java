@@ -33,19 +33,19 @@ public class BlockSpikeFeature extends Feature<BlockSpikeFeatureConfig> {
         if (!canGenerate(structureWorldAccess, blockPos)) {
             return false;
         } else {
-            Optional<CaveSurface> optional = CaveSurface.create(structureWorldAccess, blockPos, blockSpikeFeatureConfig.floorToCeilingSearchRange, DripstoneHelper::canGenerate, DripstoneHelper::canReplaceOrLava);
+            Optional<CaveSurface> optional = CaveSurface.create(structureWorldAccess, blockPos, blockSpikeFeatureConfig.floorToCeilingSearchRange(), DripstoneHelper::canGenerate, DripstoneHelper::canReplaceOrLava);
             if (optional.isPresent() && optional.get() instanceof CaveSurface.Bounded bounded) {
                 if (bounded.getHeight() < 4) {
                     return false;
                 } else {
-                    int i = (int)((float)bounded.getHeight() * blockSpikeFeatureConfig.maxColumnRadiusToCaveHeightRatio);
-                    int j = MathHelper.clamp(i, blockSpikeFeatureConfig.columnRadius.getMin(), blockSpikeFeatureConfig.columnRadius.getMax());
-                    int k = MathHelper.nextBetween(random, blockSpikeFeatureConfig.columnRadius.getMin(), j);
-                    DripstoneGenerator dripstoneGenerator = createGenerator(blockPos.withY(bounded.getCeiling() - 1), false, random, k, blockSpikeFeatureConfig.stalactiteBluntness, blockSpikeFeatureConfig.heightScale);
-                    DripstoneGenerator dripstoneGenerator2 = createGenerator(blockPos.withY(bounded.getFloor() + 1), true, random, k, blockSpikeFeatureConfig.stalagmiteBluntness, blockSpikeFeatureConfig.heightScale);
+                    int i = (int)((float)bounded.getHeight() * blockSpikeFeatureConfig.maxColumnRadiusToCaveHeightRatio());
+                    int j = MathHelper.clamp(i, blockSpikeFeatureConfig.columnRadius().getMin(), blockSpikeFeatureConfig.columnRadius().getMax());
+                    int k = MathHelper.nextBetween(random, blockSpikeFeatureConfig.columnRadius().getMin(), j);
+                    DripstoneGenerator dripstoneGenerator = createGenerator(blockPos.withY(bounded.getCeiling() - 1), false, random, k, blockSpikeFeatureConfig.stalactiteBluntness(), blockSpikeFeatureConfig.heightScale());
+                    DripstoneGenerator dripstoneGenerator2 = createGenerator(blockPos.withY(bounded.getFloor() + 1), true, random, k, blockSpikeFeatureConfig.stalagmiteBluntness(), blockSpikeFeatureConfig.heightScale());
                     WindModifier windModifier2;
                     if (dripstoneGenerator.generateWind(blockSpikeFeatureConfig) && dripstoneGenerator2.generateWind(blockSpikeFeatureConfig)) {
-                        windModifier2 = new WindModifier(blockPos.getY(), random, blockSpikeFeatureConfig.windSpeed);
+                        windModifier2 = new WindModifier(blockPos.getY(), random, blockSpikeFeatureConfig.windSpeed());
                     } else {
                         windModifier2 = WindModifier.create();
                     }
@@ -138,9 +138,7 @@ public class BlockSpikeFeature extends Feature<BlockSpikeFeatureConfig> {
                                 BlockPos blockPos = wind.modify(mutable);
                                 if (canGenerateOrLava(world, blockPos)) {
                                     bl = true;
-                                    Block block;
-                                    if (pos.getY() > basePos.getY() + (k * 0.8F)) block = config.tipState.getBlockState(random, blockPos).getBlock();
-                                    else block = config.state.getBlockState(random, blockPos).getBlock();
+                                    Block block = config.state().getBlockState(random, blockPos).getBlock();
                                     world.setBlockState(blockPos, block.getDefaultState(), 2);
                                 } else if (bl && world.getBlockState(blockPos).isIn(BlockTags.BASE_STONE_OVERWORLD)) {
                                     break;
@@ -152,11 +150,10 @@ public class BlockSpikeFeature extends Feature<BlockSpikeFeatureConfig> {
                     }
                 }
             }
-
         }
 
         boolean generateWind(BlockSpikeFeatureConfig config) {
-            return this.scale >= config.minRadiusForWind && this.bluntness >= (double)config.minBluntnessForWind;
+            return this.scale >= config.minRadiusForWind() && this.bluntness >= (double)config.minBluntnessForWind();
         }
     }
 

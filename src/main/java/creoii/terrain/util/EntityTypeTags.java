@@ -8,4 +8,5 @@ import net.minecraft.util.Identifier;
 
 public class EntityTypeTags {
     public static final Tag<EntityType<?>> MOLTEN_MAGMA_WALKABLE = TagRegistry.entityType(new Identifier(TerrainMod.MOD_ID, "molten_magma_walkable"));
+    public static final Tag<EntityType<?>> QUICKSAND_WALKABLE = TagRegistry.entityType(new Identifier(TerrainMod.MOD_ID, "quicksand_walkable"));
 }
