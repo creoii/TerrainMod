@@ -1,18 +1,18 @@
 package creoii.terrain.block;
 
+import creoii.terrain.registry.BlockRegistry;
 import creoii.terrain.util.EntityTypeTags;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.EntityShapeContext;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.FallingBlockEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
@@ -22,6 +22,8 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 import java.util.Random;
@@ -75,6 +77,26 @@ public class MoltenMagmaBlock extends Block {
             }
         }
         return VoxelShapes.empty();
+    }
+
+    @Override
+    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+        super.onPlaced(world, pos, state, placer, itemStack);
+
+        for (Direction direction : Direction.values()) {
+            if (direction != Direction.DOWN && world.getFluidState(pos.offset(direction)).isIn(FluidTags.WATER)) {
+                world.setBlockState(pos, BlockRegistry.COOLED_MAGMA.getDefaultState(), 3);
+            }
+        }
+    }
+
+    @Override
+    @SuppressWarnings("deprecation")
+    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+        if (direction != Direction.DOWN && neighborState.getFluidState().isIn(FluidTags.WATER)) {
+            return BlockRegistry.COOLED_MAGMA.getDefaultState();
+        }
+        return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
     @SuppressWarnings("deprecation")

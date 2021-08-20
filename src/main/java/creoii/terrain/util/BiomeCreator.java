@@ -110,6 +110,8 @@ public class BiomeCreator {
         DefaultBiomeFeatures.addDefaultOres(builder2, false);
         DefaultBiomeFeatures.addDefaultDisks(builder2);
         DefaultBiomeFeatures.addDefaultMushrooms(builder2);
+        builder2.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, ConfiguredFeatureRegistry.SANDSTONE_PILLAR);
+        builder2.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, ConfiguredFeatureRegistry.ARIDSTONE_PILLAR);
         builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatureRegistry.ARID_CAVES_CEILING_VEGETATION);
         builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatureRegistry.ARID_CAVES_SAND);
         builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatureRegistry.ARID_CAVES_VEGETATION);

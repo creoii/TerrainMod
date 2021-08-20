@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "terrain:block/cooled_magma" }
+  }
+}
