@@ -34,6 +34,7 @@ import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
 import java.util.List;
+import java.util.Random;
 
 public class ConfiguredFeatureRegistry {
     public static final ConfiguredFeature<?, ?> BLANK = Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(new SimpleBlockStateProvider(Blocks.CAVE_AIR.getDefaultState())));
@@ -68,6 +69,7 @@ public class ConfiguredFeatureRegistry {
     public static final ConfiguredFeature<?, ?> BLUE_ICE_STONE_BLOBS = Feature.NETHERRACK_REPLACE_BLOBS.configure(new ReplaceBlobsFeatureConfig(Blocks.STONE.getDefaultState(), Blocks.BLUE_ICE.getDefaultState(), UniformIntProvider.create(1, 3))).range(Decorators.BOTTOM_TO_TOP).spreadHorizontally().repeat(2);
     public static final ConfiguredFeature<?, ?> BLUE_ICE_DEEPSLATE_BLOBS = Feature.NETHERRACK_REPLACE_BLOBS.configure(new ReplaceBlobsFeatureConfig(Blocks.DEEPSLATE.getDefaultState(), Blocks.BLUE_ICE.getDefaultState(), UniformIntProvider.create(1, 3))).range(Decorators.BOTTOM_TO_TOP).spreadHorizontally().repeat(2);
     public static final ConfiguredFeature<?, ?> GIANT_ICE_SPIKE = FeatureRegistry.BLOCK_SPIKE.configure(new BlockSpikeFeatureConfig(new SimpleBlockStateProvider(Blocks.PACKED_ICE.getDefaultState()), 30, UniformIntProvider.create(3, 12), UniformFloatProvider.create(0.4F, 1.5F), 0.25F, UniformFloatProvider.create(0.1F, 0.33F), UniformFloatProvider.create(0.1F, 0.33F), UniformFloatProvider.create(0.0F, 0.5F), 4, 0.2F)).range(Decorators.BOTTOM_TO_TOP_BELOW_120).spreadHorizontally().repeat(UniformIntProvider.create(4, 20));
+    public static final ConfiguredFeature<?, ?> GLACITE_PATCH = Feature.DELTA_FEATURE.configure(new DeltaFeatureConfig(BlockRegistry.GLACITE.getDefaultState(), BlockRegistry.GLACITE.getDefaultState(), UniformIntProvider.create(4, 8), UniformIntProvider.create(0, UniformIntProvider.create(0, 1).get(new Random())))).decorate(Decorator.COUNT_MULTILAYER.configure(new CountConfig(12)).applyChance(8));
 
     public static final ConfiguredFeature<?, ?> LAVA_SOURCE_CEILING = Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(new SimpleBlockStateProvider(Blocks.LAVA.getDefaultState())));
     public static final ConfiguredFeature<?, ?> SPARSE_SMALL_BASALT_COLUMNS = Feature.BASALT_COLUMNS.configure(new BasaltColumnsFeatureConfig(ConstantIntProvider.create(1), UniformIntProvider.create(2, 3))).decorate(Decorator.COUNT_MULTILAYER.configure(new CountConfig(3)).applyChance(50));
@@ -137,6 +139,7 @@ public class ConfiguredFeatureRegistry {
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "blue_ice_stone_blobs"), BLUE_ICE_STONE_BLOBS);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "blue_ice_deepslate_blobs"), BLUE_ICE_DEEPSLATE_BLOBS);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "giant_ice_spike"), GIANT_ICE_SPIKE);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "glacite_patch"), GLACITE_PATCH);
 
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "lavarock_patch"), LAVAROCK_PATCH);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "lavarock_patch_ceiling"), LAVAROCK_PATCH_CEILING);

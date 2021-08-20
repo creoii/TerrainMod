@@ -27,6 +27,7 @@ public class BlockRegistry {
     public static final Block PURPLE_CAVE_MUSHROOM_BLOCK = new Block(BlockSettings.caveMushroom(MapColor.TERRACOTTA_PURPLE));
     public static final Block GREEN_CAVE_MUSHROOM_BLOCK = new Block(BlockSettings.caveMushroom(MapColor.GREEN));
     public static final Block BLUE_CAVE_MUSHROOM_BLOCK = new Block(BlockSettings.caveMushroom(MapColor.BLUE));
+    public static final Block GLACITE = new Block(AbstractBlock.Settings.copy(Blocks.STONE).mapColor(MapColor.DEEPSLATE_GRAY));
     public static final Block LAVAROCK = new Block(AbstractBlock.Settings.copy(Blocks.STONE).mapColor(MapColor.BLACK));
     public static final Block MOLTEN_MAGMA = new MoltenMagmaBlock(BlockSettings.MOLTEN_MAGMA);
     public static final Block COOLED_MAGMA = new Block(AbstractBlock.Settings.copy(Blocks.STONE));
@@ -48,6 +49,7 @@ public class BlockRegistry {
         createBlock("purple_cave_mushroom_block", PURPLE_CAVE_MUSHROOM_BLOCK, ItemGroup.BUILDING_BLOCKS);
         createBlock("green_cave_mushroom_block", GREEN_CAVE_MUSHROOM_BLOCK, ItemGroup.BUILDING_BLOCKS);
         createBlock("blue_cave_mushroom_block", BLUE_CAVE_MUSHROOM_BLOCK, ItemGroup.BUILDING_BLOCKS);
+        createBlock("glacite", GLACITE, ItemGroup.BUILDING_BLOCKS);
         createBlock("lavarock", LAVAROCK, ItemGroup.BUILDING_BLOCKS);
         createBlock("molten_magma", MOLTEN_MAGMA, ItemGroup.DECORATIONS);
         createBlock("cooled_magma", COOLED_MAGMA, ItemGroup.BUILDING_BLOCKS);

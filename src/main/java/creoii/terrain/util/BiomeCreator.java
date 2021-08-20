@@ -33,6 +33,7 @@ public class BiomeCreator {
         DefaultBiomeFeatures.addDefaultDisks(builder2);
         DefaultBiomeFeatures.addFrozenTopLayer(builder2);
         builder2.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, ConfiguredFeatureRegistry.GIANT_ICE_SPIKE);
+        builder2.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, ConfiguredFeatureRegistry.GLACITE_PATCH);
         builder2.feature(GenerationStep.Feature.UNDERGROUND_ORES, ConfiguredFeatureRegistry.BLUE_ICE_STONE_BLOBS);
         builder2.feature(GenerationStep.Feature.UNDERGROUND_ORES, ConfiguredFeatureRegistry.BLUE_ICE_DEEPSLATE_BLOBS);
         builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatureRegistry.FRIGID_CAVES_CEILING_VEGETATION);
