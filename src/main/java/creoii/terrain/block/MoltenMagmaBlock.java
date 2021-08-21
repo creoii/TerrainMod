@@ -55,10 +55,12 @@ public class MoltenMagmaBlock extends Block {
                 if (bl && random.nextBoolean()) {
                     world.addParticle(ParticleTypes.FLAME, entity.getX(), pos.getY() + 1, entity.getZ(), MathHelper.nextBetween(random, -1.0F, 1.0F) * 0.083333336F, 0.05000000074505806D, MathHelper.nextBetween(random, -1.0F, 1.0F) * 0.083333336F);
                 }
-
-                if (!entity.isFireImmune()) entity.setOnFireFor(8);
-                entity.damage(DamageSource.LAVA, 0.5F);
             }
+        }
+
+        if (!entity.isFireImmune()) {
+            entity.setOnFireFor(8);
+            entity.damage(DamageSource.LAVA, 0.5F);
         }
     }
 
