@@ -14,18 +14,17 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.VerticalSurfaceType;
+import net.minecraft.util.math.floatprovider.ConstantFloatProvider;
 import net.minecraft.util.math.floatprovider.UniformFloatProvider;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.world.Heightmap;
 import net.minecraft.world.gen.CountConfig;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.decorator.CaveSurfaceDecoratorConfig;
 import net.minecraft.world.gen.decorator.CountNoiseDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
-import net.minecraft.world.gen.decorator.HeightmapDecoratorConfig;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
@@ -108,6 +107,19 @@ public class ConfiguredFeatureRegistry {
     public static final ConfiguredFeature<?, ?> GIANT_CRYSTAL_SPIKE = FeatureRegistry.BLOCK_SPIKE.configure(new BlockSpikeFeatureConfig(new SimpleBlockStateProvider(BlockRegistry.CRYSTAL_BLOCK.getDefaultState()), 48, UniformIntProvider.create(4, 15), UniformFloatProvider.create(0.4F, 1.5F), 0.25F, UniformFloatProvider.create(0.2F, 0.4F), UniformFloatProvider.create(0.2F, 0.4F), UniformFloatProvider.create(0.2F, 0.8F), 4, 0.2F)).range(Decorators.BOTTOM_TO_TOP_BELOW_120).spreadHorizontally().repeat(UniformIntProvider.create(8, 24));
     public static final ConfiguredFeature<?, ?> DENSE_AMETHYST_GEODE = Feature.GEODE.configure(new GeodeFeatureConfig(new GeodeLayerConfig(new SimpleBlockStateProvider(Blocks.AIR.getDefaultState()), new SimpleBlockStateProvider(Blocks.AMETHYST_BLOCK.getDefaultState()), new SimpleBlockStateProvider(Blocks.BUDDING_AMETHYST.getDefaultState()), new SimpleBlockStateProvider(Blocks.CALCITE.getDefaultState()), new SimpleBlockStateProvider(Blocks.SMOOTH_BASALT.getDefaultState()), ImmutableList.of(Blocks.SMALL_AMETHYST_BUD.getDefaultState(), Blocks.MEDIUM_AMETHYST_BUD.getDefaultState(), Blocks.LARGE_AMETHYST_BUD.getDefaultState(), Blocks.AMETHYST_CLUSTER.getDefaultState()), BlockTags.FEATURES_CANNOT_REPLACE.getId(), BlockTags.GEODE_INVALID_BLOCKS.getId()), new GeodeLayerThicknessConfig(1.7D, 2.2D, 3.2D, 4.2D), new GeodeCrackConfig(0.95D, 2.0D, 2), 0.35D, 0.083D, true, UniformIntProvider.create(4, 6), UniformIntProvider.create(3, 4), UniformIntProvider.create(1, 2), -16, 16, 0.05D, 1)).uniformRange(YOffset.aboveBottom(6), YOffset.fixed(46)).spreadHorizontally().applyChance(21);
 
+    public static final ConfiguredFeature<?, ?> RIVERSLATE_PATCH = Feature.VEGETATION_PATCH.configure(new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE.getId(), new SimpleBlockStateProvider(BlockRegistry.RIVERSLATE.getDefaultState()), () -> Feature.RANDOM_BOOLEAN_SELECTOR.configure(new RandomBooleanFeatureConfig(() -> ConfiguredFeatures.JUNGLE_TREE, () -> ConfiguredFeatures.PATCH_GRASS_JUNGLE)), VerticalSurfaceType.FLOOR, UniformIntProvider.create(2, 3), 0.0F, 5, 0.04F, UniformIntProvider.create(2, 5), 0.3F));
+    public static final ConfiguredFeature<?, ?> RIVERSLATE_PATCH_CEILING = Feature.VEGETATION_PATCH.configure(new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE.getId(), new SimpleBlockStateProvider(BlockRegistry.RIVERSLATE.getDefaultState()), () -> BLANK, VerticalSurfaceType.CEILING, UniformIntProvider.create(2, 3), 0.0F, 5, 0.002F, UniformIntProvider.create(2, 5), 0.3F));
+    public static final ConfiguredFeature<?, ?> JUNGLE_CAVES_VEGETATION = RIVERSLATE_PATCH.decorate(Decorator.CAVE_SURFACE.configure(new CaveSurfaceDecoratorConfig(VerticalSurfaceType.FLOOR, 12))).range(Decorators.BOTTOM_TO_TOP_BELOW_120).spreadHorizontally().repeat(32);
+    public static final ConfiguredFeature<?, ?> JUNGLE_CAVES_CEILING_VEGETATION = RIVERSLATE_PATCH_CEILING.decorate(Decorator.CAVE_SURFACE.configure(new CaveSurfaceDecoratorConfig(VerticalSurfaceType.CEILING, 12))).range(Decorators.BOTTOM_TO_TOP_BELOW_120).spreadHorizontally().repeat(32);
+    public static final ConfiguredFeature<SimpleBlockFeatureConfig, ?> JUNGLE_VEGETATION = Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.FERN.getDefaultState(), 8).add(Blocks.LARGE_FERN.getDefaultState(), 4).add(Blocks.GRASS.getDefaultState(), 25).add(Blocks.TALL_GRASS.getDefaultState(), 10))));
+    public static final ConfiguredFeature<?, ?> GRASS_POOL = Feature.VEGETATION_PATCH.configure(new VegetationPatchFeatureConfig(BlockTags.LUSH_GROUND_REPLACEABLE.getId(), new SimpleBlockStateProvider(Blocks.GRASS_BLOCK.getDefaultState()), () -> Feature.RANDOM_BOOLEAN_SELECTOR.configure(new RandomBooleanFeatureConfig(() -> ConfiguredFeatures.JUNGLE_TREE, () -> JUNGLE_VEGETATION)), VerticalSurfaceType.FLOOR, ConstantIntProvider.create(1), 0.8F, 2, 0.1F, UniformIntProvider.create(5, 8), 0.7F));
+    public static final ConfiguredFeature<?, ?> GRASS_POOL_BUSHES = Feature.VEGETATION_PATCH.configure(new VegetationPatchFeatureConfig(BlockTags.LUSH_GROUND_REPLACEABLE.getId(), new SimpleBlockStateProvider(Blocks.GRASS_BLOCK.getDefaultState()), () -> Feature.RANDOM_BOOLEAN_SELECTOR.configure(new RandomBooleanFeatureConfig(() -> ConfiguredFeatures.JUNGLE_BUSH, () -> JUNGLE_VEGETATION)), VerticalSurfaceType.FLOOR, ConstantIntProvider.create(1), 0.8F, 2, 0.1F, UniformIntProvider.create(5, 8), 0.7F));
+    public static final ConfiguredFeature<?, ?> GRASS_POOL_TALL_TREES = Feature.VEGETATION_PATCH.configure(new VegetationPatchFeatureConfig(BlockTags.LUSH_GROUND_REPLACEABLE.getId(), new SimpleBlockStateProvider(Blocks.GRASS_BLOCK.getDefaultState()), () -> Feature.RANDOM_BOOLEAN_SELECTOR.configure(new RandomBooleanFeatureConfig(() -> ConfiguredFeatures.MEGA_JUNGLE_TREE, () -> JUNGLE_VEGETATION)), VerticalSurfaceType.FLOOR, ConstantIntProvider.create(1), 0.8F, 2, 0.1F, UniformIntProvider.create(5, 8), 0.7F));
+    public static final ConfiguredFeature<?, ?> MOSS_POOL = Feature.VEGETATION_PATCH.configure(new VegetationPatchFeatureConfig(BlockTags.LUSH_GROUND_REPLACEABLE.getId(), new SimpleBlockStateProvider(Blocks.MOSS_BLOCK.getDefaultState()), () -> Feature.RANDOM_BOOLEAN_SELECTOR.configure(new RandomBooleanFeatureConfig(() -> ConfiguredFeatures.JUNGLE_TREE, () -> JUNGLE_VEGETATION)), VerticalSurfaceType.FLOOR, UniformIntProvider.create(1, 2), 0.1F, 1, 0.1F, UniformIntProvider.create(1, 3), 0.3F));
+    public static final ConfiguredFeature<?, ?> JUNGLE_CAVES_GRASS = Feature.RANDOM_BOOLEAN_SELECTOR.configure(new RandomBooleanFeatureConfig(() -> Feature.RANDOM_BOOLEAN_SELECTOR.configure(new RandomBooleanFeatureConfig(() -> GRASS_POOL, () -> Feature.RANDOM_BOOLEAN_SELECTOR.configure(new RandomBooleanFeatureConfig(() -> GRASS_POOL_BUSHES, () -> GRASS_POOL_TALL_TREES)))), () -> MOSS_POOL)).decorate(Decorator.CAVE_SURFACE.configure(new CaveSurfaceDecoratorConfig(VerticalSurfaceType.FLOOR, 12))).range(Decorators.BOTTOM_TO_TOP_BELOW_120).spreadHorizontally().repeat(48);
+    public static final ConfiguredFeature<?, ?> SPARSE_WATER_DELTA = Feature.DELTA_FEATURE.configure(new DeltaFeatureConfig(Blocks.WATER.getDefaultState(), Blocks.GRASS_BLOCK.getDefaultState(), UniformIntProvider.create(3, 6), UniformIntProvider.create(1, 2))).decorate(Decorator.COUNT_MULTILAYER.configure(new CountConfig(24)).applyChance(8));
+    public static final ConfiguredFeature<?, ?> RIVERSLATE_ROCK = FeatureRegistry.BLOCK_SPIKE.configure(new BlockSpikeFeatureConfig(new SimpleBlockStateProvider(BlockRegistry.RIVERSLATE.getDefaultState()), 30, UniformIntProvider.create(2, 5), UniformFloatProvider.create(0.45F, 0.9F), 0.25F, UniformFloatProvider.create(2.0F, 5.0F), UniformFloatProvider.create(2.0F, 5.0F), ConstantFloatProvider.create(0.0F), 0, 0.0F)).range(Decorators.BOTTOM_TO_TOP_BELOW_120).spreadHorizontally().repeat(UniformIntProvider.create(16, 32));
+
     public static void register() {
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "blank"), BLANK);
 
@@ -174,5 +186,17 @@ public class ConfiguredFeatureRegistry {
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "crystal_block_pool"), CRYSTAL_BLOCK_POOL);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "giant_crystal_spike"), GIANT_CRYSTAL_SPIKE);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "dense_amethyst_geode"), DENSE_AMETHYST_GEODE);
+
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "riverslate_patch"), RIVERSLATE_PATCH);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "riverslate_patch_ceiling"), RIVERSLATE_PATCH_CEILING);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "jungle_caves_vegetation"), JUNGLE_CAVES_VEGETATION);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "jungle_caves_ceiling_vegetation"), JUNGLE_CAVES_CEILING_VEGETATION);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "jungle_vegetation"), JUNGLE_VEGETATION);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "grass_pool"), GRASS_POOL);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "grass_pool_bushes"), GRASS_POOL_BUSHES);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "moss_pool"), MOSS_POOL);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "jungle_caves_grass"), JUNGLE_CAVES_GRASS);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "sparse_water_delta"), SPARSE_WATER_DELTA);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "riverslate_rock"), RIVERSLATE_ROCK);
     }
 }

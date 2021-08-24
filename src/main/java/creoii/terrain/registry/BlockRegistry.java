@@ -37,6 +37,7 @@ public class BlockRegistry {
     public static final Block CRYSTAL_FLOWER = new CrystalFlowerBlock(AbstractBlock.Settings.copy(Blocks.AMETHYST_CLUSTER));
     public static final Block LUMINITE = new LuminiteBlock(BlockSettings.LUMINITE);
     public static final Block CRYSTALLINE_LUMINITE = new LuminiteBlock(BlockSettings.CRYSTALLINE_LUMINITE);
+    public static final Block RIVERSLATE = new Block(AbstractBlock.Settings.copy(Blocks.STONE));
 
     public static void register() {
         createBlock("red_lotus", RED_LOTUS, ItemGroup.DECORATIONS);
@@ -59,6 +60,7 @@ public class BlockRegistry {
         createBlock("crystal_flower", CRYSTAL_FLOWER, ItemGroup.DECORATIONS);
         createBlock("luminite", LUMINITE, ItemGroup.BUILDING_BLOCKS);
         createBlock("crystalline_luminite", CRYSTALLINE_LUMINITE, ItemGroup.BUILDING_BLOCKS);
+        createBlock("riverslate", RIVERSLATE, ItemGroup.BUILDING_BLOCKS);
     }
 
     @Environment(EnvType.CLIENT)

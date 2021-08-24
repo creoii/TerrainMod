@@ -19,10 +19,12 @@
   "block.terrain.crystalline_luminite": "Crystalline Luminite",
   "block.terrain.crystal_block": "Crystal Block",
   "block.terrain.crystal_flower": "Crystal Flower",
+  "block.terrain.riverslate": "Riverslate",
 
   "biome.terrain.frigid_caves": "Frigid Caves",
   "biome.terrain.mushroom_caves": "Mushroom Caves",
   "biome.terrain.molten_caves": "Molten Caves",
   "biome.terrain.arid_caves": "Arid Caves",
-  "biome.terrain.crystal_caves": "Crystal Caves"
+  "biome.terrain.crystal_caves": "Crystal Caves",
+  "biome.terrain.jungle_caves": "Jungle Caves"
 }

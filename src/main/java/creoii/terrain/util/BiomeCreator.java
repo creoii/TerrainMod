@@ -132,7 +132,6 @@ public class BiomeCreator {
         DefaultBiomeFeatures.addDefaultUndergroundStructures(builder2);
         DefaultBiomeFeatures.addLandCarvers(builder2);
         DefaultBiomeFeatures.addDefaultLakes(builder2);
-        DefaultBiomeFeatures.addAmethystGeodes(builder2);
         DefaultBiomeFeatures.addDungeons(builder2);
         DefaultBiomeFeatures.addMineables(builder2);
         BiomeFeatures.addOres(builder2, true);
@@ -147,5 +146,33 @@ public class BiomeCreator {
         float sky = MathHelper.clamp(0.0F / 3.0F, -1.0F, 1.0F);
         int skyColor = MathHelper.hsvToRgb(0.62222224F - sky * 0.05F, 0.5F + sky * 0.1F, 1.0F);
         return new Biome.Builder().precipitation(Biome.Precipitation.RAIN).category(Biome.Category.UNDERGROUND).temperature(0.5F).downfall(0.5F).effects(new BiomeEffects.Builder().waterColor(4159204).waterFogColor(329011).fogColor(12638463).skyColor(skyColor).build()).spawnSettings(builder.build()).generationSettings(builder2.build()).build();
+    }
+
+    public static Biome createJungleCaves() {
+        SpawnSettings.Builder builder = new SpawnSettings.Builder();
+        DefaultBiomeFeatures.addJungleMobs(builder);
+
+        GenerationSettings.Builder builder2 = new GenerationSettings.Builder().surfaceBuilder(ConfiguredSurfaceBuilders.GRASS);
+        builder2.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL_JUNGLE);
+        DefaultBiomeFeatures.addDefaultUndergroundStructures(builder2);
+        DefaultBiomeFeatures.addLandCarvers(builder2);
+        DefaultBiomeFeatures.addDefaultLakes(builder2);
+        DefaultBiomeFeatures.addAmethystGeodes(builder2);
+        DefaultBiomeFeatures.addDungeons(builder2);
+        DefaultBiomeFeatures.addMineables(builder2);
+        BiomeFeatures.addOres(builder2, true);
+        DefaultBiomeFeatures.addDefaultDisks(builder2);
+        DefaultBiomeFeatures.addDefaultMushrooms(builder2);
+        DefaultBiomeFeatures.addJungleEdgeTrees(builder2);
+        DefaultBiomeFeatures.addJungleGrass(builder2);
+        builder2.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, ConfiguredFeatureRegistry.SPARSE_WATER_DELTA);
+        builder2.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, ConfiguredFeatureRegistry.RIVERSLATE_ROCK);
+        builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatureRegistry.JUNGLE_CAVES_CEILING_VEGETATION);
+        builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatureRegistry.JUNGLE_CAVES_VEGETATION);
+        builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatureRegistry.JUNGLE_CAVES_GRASS);
+
+        float sky = MathHelper.clamp(0.0F / 3.0F, -1.0F, 1.0F);
+        int skyColor = MathHelper.hsvToRgb(0.62222224F - sky * 0.05F, 0.5F + sky * 0.1F, 1.0F);
+        return new Biome.Builder().precipitation(Biome.Precipitation.RAIN).category(Biome.Category.UNDERGROUND).temperature(0.95F).downfall(0.0F).effects(new BiomeEffects.Builder().waterColor(4159204).waterFogColor(329011).fogColor(12638463).foliageColor(171776).grassColor(171776).skyColor(skyColor).build()).spawnSettings(builder.build()).generationSettings(builder2.build()).build();
     }
 }
