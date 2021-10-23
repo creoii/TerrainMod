@@ -17,8 +17,8 @@ public class PlantBlock extends net.minecraft.block.PlantBlock {
     public void onBroken(WorldAccess world, BlockPos pos, BlockState state) {
         super.onBroken(world, pos, state);
 
-        world.getEntitiesByClass(LivingEntity.class, new Box(pos.getX() - 0.5D, pos.getY() - 0.5D, pos.getZ() - 0.5D, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D), LivingEntity::isAlive).forEach((entity -> {
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 200));
-        }));
+        //world.getEntitiesByClass(LivingEntity.class, new Box(pos.getX() - 0.5D, pos.getY() - 0.5D, pos.getZ() - 0.5D, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D), LivingEntity::isAlive).forEach((entity -> {
+        //    entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 200));
+        //}));
     }
 }

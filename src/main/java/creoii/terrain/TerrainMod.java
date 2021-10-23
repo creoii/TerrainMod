@@ -12,8 +12,6 @@ public class TerrainMod implements ModInitializer, ClientModInitializer {
 		BlockRegistry.register();
 		FeatureRegistry.register();
 		ConfiguredFeatureRegistry.register();
-		SurfaceBuilderRegistry.register();
-		ConfiguredSurfaceBuilderRegistry.register();
 		BiomeRegistry.register();
 	}
 

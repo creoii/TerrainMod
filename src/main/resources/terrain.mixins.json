@@ -4,8 +4,7 @@
   "package": "creoii.terrain.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "LivingEntityMixin",
-    "VanillaBiomeParametersMixin"
+    "LivingEntityMixin"
   ],
   "client": [
   ],

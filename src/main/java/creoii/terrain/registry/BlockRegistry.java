@@ -17,7 +17,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class BlockRegistry {
-    public static final Block RED_LOTUS = new PlantBlock(AbstractBlock.Settings.copy(Blocks.GRASS));
     public static final Block CAVE_MUSHROOM_STEM = new PillarBlock(BlockSettings.caveMushroom(MapColor.TERRACOTTA_WHITE));
     public static final Block YELLOW_CAVE_MUSHROOM = new YellowCaveMushroomBlock(BlockSettings.caveMushroom(MapColor.TERRACOTTA_YELLOW));
     public static final Block PURPLE_CAVE_MUSHROOM = new PurpleCaveMushroomBlock(BlockSettings.caveMushroom(MapColor.TERRACOTTA_PURPLE));
@@ -37,10 +36,9 @@ public class BlockRegistry {
     public static final Block CRYSTAL_FLOWER = new CrystalFlowerBlock(AbstractBlock.Settings.copy(Blocks.AMETHYST_CLUSTER));
     public static final Block LUMINITE = new LuminiteBlock(BlockSettings.LUMINITE);
     public static final Block CRYSTALLINE_LUMINITE = new LuminiteBlock(BlockSettings.CRYSTALLINE_LUMINITE);
-    public static final Block RIVERSLATE = new Block(AbstractBlock.Settings.copy(Blocks.STONE));
+    public static final Block RIVERSLATE = new RiverslateBlock(AbstractBlock.Settings.copy(Blocks.STONE));
 
     public static void register() {
-        createBlock("red_lotus", RED_LOTUS, ItemGroup.DECORATIONS);
         createBlock("cave_mushroom_stem", CAVE_MUSHROOM_STEM, ItemGroup.BUILDING_BLOCKS);
         createBlock("yellow_cave_mushroom", YELLOW_CAVE_MUSHROOM, ItemGroup.DECORATIONS);
         createBlock("purple_cave_mushroom", PURPLE_CAVE_MUSHROOM, ItemGroup.DECORATIONS);
@@ -66,7 +64,6 @@ public class BlockRegistry {
     @Environment(EnvType.CLIENT)
     public static void registerClient() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
-                RED_LOTUS,
                 CRYSTAL_FLOWER
         );
     }

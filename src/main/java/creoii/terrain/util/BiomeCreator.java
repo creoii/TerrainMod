@@ -1,7 +1,6 @@
 package creoii.terrain.util;
 
 import creoii.terrain.registry.ConfiguredFeatureRegistry;
-import creoii.terrain.registry.ConfiguredSurfaceBuilderRegistry;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.math.MathHelper;
@@ -10,10 +9,7 @@ import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.feature.ConfiguredFeatures;
-import net.minecraft.world.gen.feature.ConfiguredStructureFeatures;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
-import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilders;
 
 public class BiomeCreator {
     public static Biome createFrigidCaves() {
@@ -21,11 +17,10 @@ public class BiomeCreator {
         DefaultBiomeFeatures.addBatsAndMonsters(builder);
         DefaultBiomeFeatures.addSnowyMobs(builder);
 
-        GenerationSettings.Builder builder2 = new GenerationSettings.Builder().surfaceBuilder(ConfiguredSurfaceBuilders.GRASS);
-        builder2.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL_MOUNTAIN);
-        DefaultBiomeFeatures.addDefaultUndergroundStructures(builder2);
+        GenerationSettings.Builder builder2 = new GenerationSettings.Builder();
+        //builder2.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL_MOUNTAIN);
+        //DefaultBiomeFeatures.addDefaultUndergroundStructures(builder2);
         DefaultBiomeFeatures.addLandCarvers(builder2);
-        DefaultBiomeFeatures.addDefaultLakes(builder2);
         DefaultBiomeFeatures.addAmethystGeodes(builder2);
         DefaultBiomeFeatures.addDungeons(builder2);
         DefaultBiomeFeatures.addMineables(builder2);
@@ -51,11 +46,10 @@ public class BiomeCreator {
         builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.MOOSHROOM, 8, 4, 8));
         DefaultBiomeFeatures.addCaveMobs(builder);
 
-        GenerationSettings.Builder builder2 = new GenerationSettings.Builder().surfaceBuilder(ConfiguredSurfaceBuilders.MYCELIUM);
-        builder2.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL);
-        DefaultBiomeFeatures.addDefaultUndergroundStructures(builder2);
+        GenerationSettings.Builder builder2 = new GenerationSettings.Builder();
+        //builder2.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL);
+        //DefaultBiomeFeatures.addDefaultUndergroundStructures(builder2);
         DefaultBiomeFeatures.addLandCarvers(builder2);
-        DefaultBiomeFeatures.addDefaultLakes(builder2);
         DefaultBiomeFeatures.addAmethystGeodes(builder2);
         DefaultBiomeFeatures.addDungeons(builder2);
         DefaultBiomeFeatures.addMineables(builder2);
@@ -74,11 +68,10 @@ public class BiomeCreator {
         SpawnSettings.Builder builder = new SpawnSettings.Builder();
         DefaultBiomeFeatures.addBatsAndMonsters(builder);
 
-        GenerationSettings.Builder builder2 = new GenerationSettings.Builder().surfaceBuilder(ConfiguredSurfaceBuilderRegistry.MOLTEN_CAVES);
-        builder2.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL_NETHER);
-        DefaultBiomeFeatures.addDefaultUndergroundStructures(builder2);
+        GenerationSettings.Builder builder2 = new GenerationSettings.Builder();
+        //builder2.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL_NETHER);
+        //DefaultBiomeFeatures.addDefaultUndergroundStructures(builder2);
         DefaultBiomeFeatures.addLandCarvers(builder2);
-        DefaultBiomeFeatures.addDefaultLakes(builder2);
         DefaultBiomeFeatures.addAmethystGeodes(builder2);
         DefaultBiomeFeatures.addDungeons(builder2);
         DefaultBiomeFeatures.addMineables(builder2);
@@ -100,11 +93,10 @@ public class BiomeCreator {
         SpawnSettings.Builder builder = new SpawnSettings.Builder();
         DefaultBiomeFeatures.addDesertMobs(builder);
 
-        GenerationSettings.Builder builder2 = new GenerationSettings.Builder().surfaceBuilder(ConfiguredSurfaceBuilders.DESERT);
-        builder2.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL_DESERT);
-        DefaultBiomeFeatures.addDefaultUndergroundStructures(builder2);
+        GenerationSettings.Builder builder2 = new GenerationSettings.Builder();
+        //builder2.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL_DESERT);
+        //DefaultBiomeFeatures.addDefaultUndergroundStructures(builder2);
         DefaultBiomeFeatures.addLandCarvers(builder2);
-        DefaultBiomeFeatures.addDefaultLakes(builder2);
         DefaultBiomeFeatures.addAmethystGeodes(builder2);
         DefaultBiomeFeatures.addDungeons(builder2);
         DefaultBiomeFeatures.addMineables(builder2);
@@ -127,11 +119,10 @@ public class BiomeCreator {
         builder.spawn(SpawnGroup.UNDERGROUND_WATER_CREATURE, new SpawnSettings.SpawnEntry(EntityType.AXOLOTL, 10, 4, 6));
         DefaultBiomeFeatures.addBatsAndMonsters(builder);
 
-        GenerationSettings.Builder builder2 = new GenerationSettings.Builder().surfaceBuilder(ConfiguredSurfaceBuilders.GRASS);
-        builder2.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL);
-        DefaultBiomeFeatures.addDefaultUndergroundStructures(builder2);
+        GenerationSettings.Builder builder2 = new GenerationSettings.Builder();
+        //builder2.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL);
+        //DefaultBiomeFeatures.addDefaultUndergroundStructures(builder2);
         DefaultBiomeFeatures.addLandCarvers(builder2);
-        DefaultBiomeFeatures.addDefaultLakes(builder2);
         DefaultBiomeFeatures.addDungeons(builder2);
         DefaultBiomeFeatures.addMineables(builder2);
         BiomeFeatures.addOres(builder2, true);
@@ -152,18 +143,16 @@ public class BiomeCreator {
         SpawnSettings.Builder builder = new SpawnSettings.Builder();
         DefaultBiomeFeatures.addJungleMobs(builder);
 
-        GenerationSettings.Builder builder2 = new GenerationSettings.Builder().surfaceBuilder(ConfiguredSurfaceBuilders.GRASS);
-        builder2.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL_JUNGLE);
-        DefaultBiomeFeatures.addDefaultUndergroundStructures(builder2);
+        GenerationSettings.Builder builder2 = new GenerationSettings.Builder();
+        //builder2.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL_JUNGLE);
+        //DefaultBiomeFeatures.addDefaultUndergroundStructures(builder2);
         DefaultBiomeFeatures.addLandCarvers(builder2);
-        DefaultBiomeFeatures.addDefaultLakes(builder2);
         DefaultBiomeFeatures.addAmethystGeodes(builder2);
         DefaultBiomeFeatures.addDungeons(builder2);
         DefaultBiomeFeatures.addMineables(builder2);
         BiomeFeatures.addOres(builder2, true);
         DefaultBiomeFeatures.addDefaultDisks(builder2);
         DefaultBiomeFeatures.addDefaultMushrooms(builder2);
-        DefaultBiomeFeatures.addJungleEdgeTrees(builder2);
         DefaultBiomeFeatures.addJungleGrass(builder2);
         builder2.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, ConfiguredFeatureRegistry.SPARSE_WATER_DELTA);
         builder2.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, ConfiguredFeatureRegistry.RIVERSLATE_ROCK);
