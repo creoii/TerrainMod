@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "terrain:aridstone_stairs",
+    "terrain:glacite_stairs",
+    "terrain:riverslate_stairs",
+    "terrain:luminite_stairs",
+    "terrain:lavarock_stairs"
+  ]
+}

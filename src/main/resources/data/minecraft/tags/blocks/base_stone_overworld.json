@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "terrain:aridstone",
+    "terrain:glacite",
+    "terrain:riverslate",
+    "terrain:luminite",
+    "terrain:lavarock"
+  ]
+}

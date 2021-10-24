@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "terrain:aridstone_slab",
+    "terrain:glacite_slab",
+    "terrain:riverslate_slab",
+    "terrain:luminite_slab",
+    "terrain:lavarock_slab"
+  ]
+}
