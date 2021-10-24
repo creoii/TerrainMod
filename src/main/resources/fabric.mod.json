@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Terrain",
-  "description": "Adds cave biome, hoping to add more in the future :D",
+  "description": "Adds cave biomes, hoping to add more in the future :D",
   "authors": [
     "CreoII"
   ],
