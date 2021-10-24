@@ -28,7 +28,7 @@ public class PurpleCaveMushroomBlock extends CaveMushroomBlock {
             aoe.setWaitTime(0);
             aoe.setRadiusGrowth(-aoe.getRadius() / MathHelper.clamp(fallDistance * 12.0F, 0.0F, 600.0F));
             aoe.setPotion(new Potion(new StatusEffectInstance(StatusEffects.POISON, MathHelper.clamp(Math.round(fallDistance * 20.0F), 0, 9600))));
-            aoe.addEffect(new StatusEffectInstance(StatusEffects.POISON, 200));
+            aoe.addEffect(new StatusEffectInstance(StatusEffects.POISON, MathHelper.clamp(Math.round(fallDistance * 20.0F), 0, 9600)));
             aoe.setColor(10027261);
             world.spawnEntity(aoe);
         }

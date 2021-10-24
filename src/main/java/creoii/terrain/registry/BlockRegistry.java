@@ -19,7 +19,7 @@ public class BlockRegistry {
     public static final Block CAVE_MUSHROOM_STEM = new PillarBlock(BlockSettings.caveMushroom(MapColor.TERRACOTTA_WHITE));
     public static final Block YELLOW_CAVE_MUSHROOM = new YellowCaveMushroomBlock(BlockSettings.caveMushroom(MapColor.TERRACOTTA_YELLOW));
     public static final Block PURPLE_CAVE_MUSHROOM = new PurpleCaveMushroomBlock(BlockSettings.caveMushroom(MapColor.TERRACOTTA_PURPLE));
-    public static final Block GREEN_CAVE_MUSHROOM = new CaveMushroomBlock(BlockSettings.caveMushroom(MapColor.GREEN));
+    public static final Block GREEN_CAVE_MUSHROOM = new GreenCaveMushroomBlock(BlockSettings.caveMushroom(MapColor.GREEN));
     public static final Block BLUE_CAVE_MUSHROOM = new BlueCaveMushroomBlock(BlockSettings.caveMushroom(MapColor.BLUE).luminance(BlueCaveMushroomBlock::getLightValue));
     public static final Block YELLOW_CAVE_MUSHROOM_BLOCK = new Block(BlockSettings.caveMushroom(MapColor.TERRACOTTA_YELLOW));
     public static final Block PURPLE_CAVE_MUSHROOM_BLOCK = new Block(BlockSettings.caveMushroom(MapColor.TERRACOTTA_PURPLE));
