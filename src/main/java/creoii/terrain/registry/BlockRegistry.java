@@ -43,9 +43,9 @@ public class BlockRegistry {
     public static final Block CRYSTAL_BLOCK = new Block(AbstractBlock.Settings.copy(Blocks.AMETHYST_BLOCK).mapColor(MapColor.WHITE).luminance((state) -> 3));
     public static final Block CRYSTAL_FLOWER = new CrystalFlowerBlock(AbstractBlock.Settings.copy(Blocks.AMETHYST_CLUSTER));
     public static final Block LUMINITE = new LuminiteBlock(BlockSettings.LUMINITE);
-    public static final Block LUMINITE_SLAB = new SlabBlock(BlockSettings.LUMINITE);
-    public static final Block LUMINITE_STAIRS = new StairsBlock(LUMINITE.getDefaultState(), BlockSettings.LUMINITE);
-    public static final Block LUMINITE_WALL = new WallBlock(BlockSettings.LUMINITE);
+    public static final Block LUMINITE_SLAB = new SlabBlock(AbstractBlock.Settings.of(Material.STONE, MapColor.TERRACOTTA_PURPLE));
+    public static final Block LUMINITE_STAIRS = new StairsBlock(LUMINITE.getDefaultState(), AbstractBlock.Settings.of(Material.STONE, MapColor.TERRACOTTA_PURPLE));
+    public static final Block LUMINITE_WALL = new WallBlock(AbstractBlock.Settings.of(Material.STONE, MapColor.TERRACOTTA_PURPLE));
     public static final Block CRYSTALLINE_LUMINITE = new LuminiteBlock(BlockSettings.CRYSTALLINE_LUMINITE);
     public static final Block RIVERSLATE = new RiverslateBlock(AbstractBlock.Settings.copy(Blocks.STONE).mapColor(MapColor.DARK_GREEN));
     public static final Block RIVERSLATE_SLAB = new SlabBlock(AbstractBlock.Settings.copy(Blocks.STONE_SLAB).mapColor(MapColor.DARK_GREEN));
