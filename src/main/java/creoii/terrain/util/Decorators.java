@@ -2,7 +2,10 @@ package creoii.terrain.util;
 
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.gen.YOffset;
-import net.minecraft.world.gen.decorator.*;
+import net.minecraft.world.gen.decorator.ConfiguredDecorator;
+import net.minecraft.world.gen.decorator.Decorator;
+import net.minecraft.world.gen.decorator.HeightmapDecoratorConfig;
+import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.heightprovider.UniformHeightProvider;
 
 public class Decorators {

@@ -2,7 +2,6 @@ package creoii.terrain.util;
 
 import creoii.terrain.TerrainMod;
 import net.fabricmc.fabric.api.tag.TagFactory;
-import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.entity.EntityType;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;

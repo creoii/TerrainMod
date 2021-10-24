@@ -1,6 +1,9 @@
 package creoii.terrain;
 
-import creoii.terrain.registry.*;
+import creoii.terrain.registry.BiomeRegistry;
+import creoii.terrain.registry.BlockRegistry;
+import creoii.terrain.registry.ConfiguredFeatureRegistry;
+import creoii.terrain.registry.FeatureRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 

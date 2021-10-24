@@ -6,6 +6,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -54,9 +57,10 @@ public class LuminiteBlock extends Block {
     @Override
     @SuppressWarnings("deprecation")
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (!state.get(LIT)) {
+        if (!world.isClient && !state.get(LIT)) {
             world.setBlockState(pos, state.with(LIT, true), 3);
-            return ActionResult.SUCCESS;
+            ItemStack held = player.getStackInHand(hand);
+            return held.getItem() instanceof BlockItem && (new ItemPlacementContext(player, hand, held, hit)).canPlace() ? ActionResult.PASS : ActionResult.SUCCESS;
         }
         return super.onUse(state, world, pos, player, hand, hit);
     }
