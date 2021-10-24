@@ -18,8 +18,6 @@ public class BiomeCreator {
         DefaultBiomeFeatures.addSnowyMobs(builder);
 
         GenerationSettings.Builder builder2 = new GenerationSettings.Builder();
-        //builder2.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL_MOUNTAIN);
-        //DefaultBiomeFeatures.addDefaultUndergroundStructures(builder2);
         DefaultBiomeFeatures.addLandCarvers(builder2);
         DefaultBiomeFeatures.addAmethystGeodes(builder2);
         DefaultBiomeFeatures.addDungeons(builder2);
@@ -47,8 +45,6 @@ public class BiomeCreator {
         DefaultBiomeFeatures.addCaveMobs(builder);
 
         GenerationSettings.Builder builder2 = new GenerationSettings.Builder();
-        //builder2.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL);
-        //DefaultBiomeFeatures.addDefaultUndergroundStructures(builder2);
         DefaultBiomeFeatures.addLandCarvers(builder2);
         DefaultBiomeFeatures.addAmethystGeodes(builder2);
         DefaultBiomeFeatures.addDungeons(builder2);
@@ -69,8 +65,6 @@ public class BiomeCreator {
         DefaultBiomeFeatures.addBatsAndMonsters(builder);
 
         GenerationSettings.Builder builder2 = new GenerationSettings.Builder();
-        //builder2.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL_NETHER);
-        //DefaultBiomeFeatures.addDefaultUndergroundStructures(builder2);
         DefaultBiomeFeatures.addLandCarvers(builder2);
         DefaultBiomeFeatures.addAmethystGeodes(builder2);
         DefaultBiomeFeatures.addDungeons(builder2);
@@ -94,8 +88,6 @@ public class BiomeCreator {
         DefaultBiomeFeatures.addDesertMobs(builder);
 
         GenerationSettings.Builder builder2 = new GenerationSettings.Builder();
-        //builder2.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL_DESERT);
-        //DefaultBiomeFeatures.addDefaultUndergroundStructures(builder2);
         DefaultBiomeFeatures.addLandCarvers(builder2);
         DefaultBiomeFeatures.addAmethystGeodes(builder2);
         DefaultBiomeFeatures.addDungeons(builder2);
@@ -121,8 +113,6 @@ public class BiomeCreator {
         DefaultBiomeFeatures.addBatsAndMonsters(builder);
 
         GenerationSettings.Builder builder2 = new GenerationSettings.Builder();
-        //builder2.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL);
-        //DefaultBiomeFeatures.addDefaultUndergroundStructures(builder2);
         DefaultBiomeFeatures.addLandCarvers(builder2);
         DefaultBiomeFeatures.addDungeons(builder2);
         DefaultBiomeFeatures.addMineables(builder2);
@@ -145,8 +135,6 @@ public class BiomeCreator {
         DefaultBiomeFeatures.addJungleMobs(builder);
 
         GenerationSettings.Builder builder2 = new GenerationSettings.Builder();
-        //builder2.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL_JUNGLE);
-        //DefaultBiomeFeatures.addDefaultUndergroundStructures(builder2);
         DefaultBiomeFeatures.addLandCarvers(builder2);
         DefaultBiomeFeatures.addAmethystGeodes(builder2);
         DefaultBiomeFeatures.addDungeons(builder2);
