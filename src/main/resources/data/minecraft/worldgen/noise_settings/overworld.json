@@ -53,7 +53,7 @@
                     "if_true": {
                       "noise": "minecraft:patch",
                       "min_threshold": -0.012,
-                      "max_threshold": Infinity,
+                      "max_threshold": 3.402823466E+38,
                       "type": "minecraft:noise_threshold"
                     },
                     "then_run": {
@@ -93,7 +93,7 @@
                     "if_true": {
                       "noise": "minecraft:nether_state_selector",
                       "min_threshold": 0.0,
-                      "max_threshold": Infinity,
+                      "max_threshold": 3.402823466E+38,
                       "type": "minecraft:noise_threshold"
                     },
                     "then_run": {
@@ -242,7 +242,7 @@
                     "if_true": {
                       "noise": "minecraft:surface_swamp",
                       "min_threshold": 0.0,
-                      "max_threshold": Infinity,
+                      "max_threshold": 3.402823466E+38,
                       "type": "minecraft:noise_threshold"
                     },
                     "then_run": {

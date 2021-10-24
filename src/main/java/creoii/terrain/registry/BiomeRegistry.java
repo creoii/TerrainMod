@@ -35,6 +35,6 @@ public class BiomeRegistry {
         Registry.register(BuiltinRegistries.BIOME, MOLTEN_CAVES_KEY.getValue(), MOLTEN_CAVES);
         Registry.register(BuiltinRegistries.BIOME, ARID_CAVES_KEY.getValue(), ARID_CAVES);
         Registry.register(BuiltinRegistries.BIOME, CRYSTAL_CAVES_KEY.getValue(), CRYSTAL_CAVES);
-        Registry.register(BuiltinRegistries.BIOME, JUNGLE_CAVES_KEY.getValue(), JUNGLE_CAVES);
+        //Registry.register(BuiltinRegistries.BIOME, JUNGLE_CAVES_KEY.getValue(), JUNGLE_CAVES);
     }
 }

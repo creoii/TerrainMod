@@ -42,7 +42,7 @@ public class BiomeCreator {
 
     public static Biome createMushroomCaves() {
         SpawnSettings.Builder builder = new SpawnSettings.Builder();
-        builder.spawn(SpawnGroup.UNDERGROUND_WATER_CREATURE, new SpawnSettings.SpawnEntry(EntityType.AXOLOTL, 10, 4, 6));
+        builder.spawn(SpawnGroup.AXOLOTLS, new SpawnSettings.SpawnEntry(EntityType.AXOLOTL, 10, 4, 6));
         builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.MOOSHROOM, 8, 4, 8));
         DefaultBiomeFeatures.addCaveMobs(builder);
 
@@ -116,7 +116,8 @@ public class BiomeCreator {
 
     public static Biome createCrystalCaves() {
         SpawnSettings.Builder builder = new SpawnSettings.Builder();
-        builder.spawn(SpawnGroup.UNDERGROUND_WATER_CREATURE, new SpawnSettings.SpawnEntry(EntityType.AXOLOTL, 10, 4, 6));
+        builder.spawn(SpawnGroup.AXOLOTLS, new SpawnSettings.SpawnEntry(EntityType.AXOLOTL, 10, 4, 6));
+        builder.spawn(SpawnGroup.WATER_AMBIENT, new SpawnSettings.SpawnEntry(EntityType.TROPICAL_FISH, 25, 8, 8));
         DefaultBiomeFeatures.addBatsAndMonsters(builder);
 
         GenerationSettings.Builder builder2 = new GenerationSettings.Builder();
