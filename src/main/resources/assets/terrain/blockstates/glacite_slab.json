@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "terrain:block/glacite_slab" },
+        "type=top": { "model": "terrain:block/glacite_slab_top" },
+        "type=double": { "model": "terrain:block/glacite" }
+    }
+}

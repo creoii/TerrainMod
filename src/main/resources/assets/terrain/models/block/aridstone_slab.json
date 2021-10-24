@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab",
+    "textures": {
+        "bottom": "terrain:block/aridstone",
+        "top": "terrain:block/aridstone",
+        "side": "terrain:block/aridstone"
+    }
+}

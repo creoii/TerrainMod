@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab_top",
+    "textures": {
+        "bottom": "terrain:block/glacite",
+        "top": "terrain:block/glacite",
+        "side": "terrain:block/glacite"
+    }
+}

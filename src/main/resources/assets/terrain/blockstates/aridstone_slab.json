@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "terrain:block/aridstone_slab" },
+        "type=top": { "model": "terrain:block/aridstone_slab_top" },
+        "type=double": { "model": "terrain:block/aridstone" }
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab",
+    "textures": {
+        "bottom": "terrain:block/luminite",
+        "top": "terrain:block/luminite",
+        "side": "terrain:block/luminite"
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab",
+    "textures": {
+        "bottom": "terrain:block/riverslate",
+        "top": "terrain:block/riverslate",
+        "side": "terrain:block/riverslate"
+    }
+}

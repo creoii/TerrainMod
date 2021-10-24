@@ -1,0 +1,8 @@
+{
+    "parent": "block/stairs",
+    "textures": {
+        "bottom": "terrain:block/aridstone",
+        "top": "terrain:block/aridstone",
+        "side": "terrain:block/aridstone"
+    }
+}

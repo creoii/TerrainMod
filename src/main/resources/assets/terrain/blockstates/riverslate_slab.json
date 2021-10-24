@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "terrain:block/riverslate_slab" },
+        "type=top": { "model": "terrain:block/riverslate_slab_top" },
+        "type=double": { "model": "terrain:block/riverslate" }
+    }
+}
