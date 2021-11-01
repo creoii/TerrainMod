@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "terrain:glacite"
+    }
+  },
+  "result": {
+    "item": "terrain:glacite_wall",
+    "count": 6
+  }
+}

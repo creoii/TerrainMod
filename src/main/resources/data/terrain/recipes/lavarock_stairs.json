@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "terrain:lavarock"
+    }
+  },
+  "result": {
+    "item": "terrain:lavarock_stairs",
+    "count": 4
+  }
+}

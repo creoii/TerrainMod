@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "terrain:luminite"
+    }
+  },
+  "result": {
+    "item": "terrain:luminite_wall",
+    "count": 6
+  }
+}
