@@ -1,0 +1,26 @@
+{
+  "replace": false,
+  "values": [
+    "terrain:aridstone",
+    "terrain:glacite",
+    "terrain:riverslate",
+    "terrain:luminite",
+    "terrain:lavarock",
+    "terrain:aridstone_stairs",
+    "terrain:glacite_stairs",
+    "terrain:riverslate_stairs",
+    "terrain:luminite_stairs",
+    "terrain:lavarock_stairs",
+    "terrain:aridstone_slab",
+    "terrain:glacite_slab",
+    "terrain:riverslate_slab",
+    "terrain:luminite_slab",
+    "terrain:lavarock_slab",
+    "terrain:aridstone_wall",
+    "terrain:glacite_wall",
+    "terrain:riverslate_wall",
+    "terrain:luminite_wall",
+    "terrain:lavarock_wall",
+    "cooled_magma"
+  ]
+}

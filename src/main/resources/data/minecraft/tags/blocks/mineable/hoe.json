@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "terrain:yellow_cave_mushroom",
+    "terrain:purple_cave_mushroom",
+    "terrain:green_cave_mushroom",
+    "terrain:blue_cave_mushroom",
+    "terrain:yellow_cave_mushroom_block",
+    "terrain:purple_cave_mushroom_block",
+    "terrain:green_cave_mushroom_block",
+    "terrain:blue_cave_mushroom_block"
+  ]
+}
