@@ -35,6 +35,8 @@
   "block.terrain.riverslate_stairs": "Riverslate Stairs",
   "block.terrain.riverslate_wall": "Riverslate Wall",
 
+  "item.terrain.quicksand_bucket": "Quicksand Bucket",
+
   "biome.terrain.frigid_caves": "Frigid Caves",
   "biome.terrain.mushroom_caves": "Mushroom Caves",
   "biome.terrain.molten_caves": "Molten Caves",

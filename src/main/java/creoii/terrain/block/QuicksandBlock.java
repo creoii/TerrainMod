@@ -1,15 +1,16 @@
 package creoii.terrain.block;
 
+import creoii.terrain.registry.ItemRegistry;
 import creoii.terrain.util.EntityTypeTags;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.EntityShapeContext;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.FallingBlockEntity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.particle.BlockStateParticleEffect;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
@@ -18,11 +19,13 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
+import net.minecraft.world.WorldEvents;
 
 import java.util.Optional;
 import java.util.Random;
 
-public class QuicksandBlock extends Block {
+public class QuicksandBlock extends Block implements FluidDrainable {
     private static final VoxelShape SHAPE = VoxelShapes.cuboid(0.0D, 0.0D, 0.0D, 1.0D, 0.8999999761581421D, 1.0D);
 
     public QuicksandBlock(Settings settings) {
@@ -77,5 +80,20 @@ public class QuicksandBlock extends Block {
 
     public static boolean canWalkOnQuicksand(Entity entity) {
         return entity.getType().isIn(EntityTypeTags.QUICKSAND_WALKABLE);
+    }
+
+    @Override
+    public ItemStack tryDrainFluid(WorldAccess world, BlockPos pos, BlockState state) {
+        world.setBlockState(pos, Blocks.AIR.getDefaultState(), Block.NOTIFY_ALL | Block.REDRAW_ON_MAIN_THREAD);
+        if (!world.isClient()) {
+            world.syncWorldEvent(WorldEvents.BLOCK_BROKEN, pos, Block.getRawIdFromState(state));
+        }
+
+        return new ItemStack(ItemRegistry.QUICKSAND_BUCKET);
+    }
+
+    @Override
+    public Optional<SoundEvent> getBucketFillSound() {
+        return Optional.of(SoundEvents.BLOCK_SAND_BREAK);
     }
 }

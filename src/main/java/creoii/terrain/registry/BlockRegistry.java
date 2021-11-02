@@ -1,8 +1,8 @@
 package creoii.terrain.registry;
 
 import creoii.terrain.TerrainMod;
-import creoii.terrain.block.*;
 import creoii.terrain.block.StairsBlock;
+import creoii.terrain.block.*;
 import creoii.terrain.util.BlockSettings;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -76,7 +76,7 @@ public class BlockRegistry {
         createBlock("aridstone_slab", ARIDSTONE_SLAB, ItemGroup.BUILDING_BLOCKS);
         createBlock("aridstone_stairs", ARIDSTONE_STAIRS, ItemGroup.BUILDING_BLOCKS);
         createBlock("aridstone_wall", ARIDSTONE_WALL, ItemGroup.DECORATIONS);
-        createBlock("quicksand", QUICKSAND, ItemGroup.DECORATIONS);
+        createBlock("quicksand", QUICKSAND, null);
         createBlock("crystal_block", CRYSTAL_BLOCK, ItemGroup.BUILDING_BLOCKS);
         createBlock("crystal_flower", CRYSTAL_FLOWER, ItemGroup.DECORATIONS);
         createBlock("luminite", LUMINITE, ItemGroup.BUILDING_BLOCKS);
@@ -97,7 +97,7 @@ public class BlockRegistry {
         );
     }
 
-    public static <T extends Block> void createBlock(String name, T block, ItemGroup group) {
+    private static <T extends Block> void createBlock(String name, T block, ItemGroup group) {
         Registry.register(Registry.BLOCK, new Identifier(TerrainMod.MOD_ID, name), block);
         if (group != null) Registry.register(Registry.ITEM, new Identifier(TerrainMod.MOD_ID, name), new BlockItem(block, new Item.Settings().group(group)));
     }
