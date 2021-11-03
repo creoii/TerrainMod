@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=y": { "model": "terrain:block/palo_verde_log" },
+    "axis=z": { "model": "terrain:block/palo_verde_log", "x": 90 },
+    "axis=x": { "model": "terrain:block/palo_verde_log", "x": 90, "y": 90 }
+  }
+}

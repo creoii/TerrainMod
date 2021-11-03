@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "side": "terrain:block/stripped_palo_verde_log",
+    "end": "terrain:block/stripped_palo_verde_log_top"
+  }
+}

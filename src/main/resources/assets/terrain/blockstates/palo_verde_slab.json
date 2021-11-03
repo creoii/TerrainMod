@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "terrain:block/palo_verde_slab" },
+        "type=top": { "model": "terrain:block/palo_verde_slab_top" },
+        "type=double": { "model": "terrain:block/palo_verde_planks" }
+    }
+}

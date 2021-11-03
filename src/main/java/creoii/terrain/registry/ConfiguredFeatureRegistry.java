@@ -24,9 +24,12 @@ import net.minecraft.world.gen.decorator.CaveSurfaceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
+import net.minecraft.world.gen.foliage.AcaciaFoliagePlacer;
 import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
+import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
+import net.minecraft.world.gen.trunk.ForkingTrunkPlacer;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
 import java.util.List;
@@ -35,7 +38,7 @@ import java.util.Random;
 public class ConfiguredFeatureRegistry {
     public static final ConfiguredFeature<?, ?> BLANK = Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(SimpleBlockStateProvider.of(Blocks.CAVE_AIR)));
 
-    public static final ConfiguredFeature<TreeFeatureConfig, ?> SMALL_YELLOW_CAVE_MUSHROOM = Feature.TREE.configure(new TreeFeatureConfig.Builder(SimpleBlockStateProvider.of(BlockRegistry.CAVE_MUSHROOM_STEM), new StraightTrunkPlacer(3, 1, 0), SimpleBlockStateProvider.of(BlockRegistry.YELLOW_CAVE_MUSHROOM_BLOCK), new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 1), new TwoLayersFeatureSize(1, 0, 1)).dirtProvider(SimpleBlockStateProvider.of(Blocks.GRASS_BLOCK)).forceDirt().build());
+    public static final ConfiguredFeature<?, ?> SMALL_YELLOW_CAVE_MUSHROOM = Feature.TREE.configure(new TreeFeatureConfig.Builder(SimpleBlockStateProvider.of(BlockRegistry.CAVE_MUSHROOM_STEM), new StraightTrunkPlacer(3, 1, 0), SimpleBlockStateProvider.of(BlockRegistry.YELLOW_CAVE_MUSHROOM_BLOCK), new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 1), new TwoLayersFeatureSize(1, 0, 1)).dirtProvider(SimpleBlockStateProvider.of(Blocks.GRASS_BLOCK)).forceDirt().build());
     public static final ConfiguredFeature<TreeFeatureConfig, ?> SMALL_PURPLE_CAVE_MUSHROOM = Feature.TREE.configure(new TreeFeatureConfig.Builder(SimpleBlockStateProvider.of(BlockRegistry.CAVE_MUSHROOM_STEM), new StraightTrunkPlacer(3, 1, 0), SimpleBlockStateProvider.of(BlockRegistry.PURPLE_CAVE_MUSHROOM_BLOCK), new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 1), new TwoLayersFeatureSize(1, 0, 1)).dirtProvider(SimpleBlockStateProvider.of(Blocks.GRASS_BLOCK)).forceDirt().build());
     public static final ConfiguredFeature<TreeFeatureConfig, ?> SMALL_GREEN_CAVE_MUSHROOM = Feature.TREE.configure(new TreeFeatureConfig.Builder(SimpleBlockStateProvider.of(BlockRegistry.CAVE_MUSHROOM_STEM), new StraightTrunkPlacer(3, 1, 0), SimpleBlockStateProvider.of(BlockRegistry.GREEN_CAVE_MUSHROOM_BLOCK), new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 1), new TwoLayersFeatureSize(1, 0, 1)).dirtProvider(SimpleBlockStateProvider.of(Blocks.GRASS_BLOCK)).forceDirt().build());
     public static final ConfiguredFeature<TreeFeatureConfig, ?> SMALL_BLUE_CAVE_MUSHROOM = Feature.TREE.configure(new TreeFeatureConfig.Builder(SimpleBlockStateProvider.of(BlockRegistry.CAVE_MUSHROOM_STEM), new StraightTrunkPlacer(3, 1, 0), SimpleBlockStateProvider.of(BlockRegistry.BLUE_CAVE_MUSHROOM_BLOCK), new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 1), new TwoLayersFeatureSize(1, 0, 1)).dirtProvider(SimpleBlockStateProvider.of(Blocks.GRASS_BLOCK)).forceDirt().build());
@@ -116,6 +119,9 @@ public class ConfiguredFeatureRegistry {
     public static final ConfiguredFeature<?, ?> SPARSE_WATER_DELTA = Feature.DELTA_FEATURE.configure(new DeltaFeatureConfig(Blocks.WATER.getDefaultState(), Blocks.GRASS_BLOCK.getDefaultState(), UniformIntProvider.create(3, 6), UniformIntProvider.create(1, 2))).decorate(Decorator.COUNT_MULTILAYER.configure(new CountConfig(24)).applyChance(8));
     public static final ConfiguredFeature<?, ?> RIVERSLATE_ROCK = FeatureRegistry.BLOCK_SPIKE.configure(new BlockSpikeFeatureConfig(SimpleBlockStateProvider.of(BlockRegistry.RIVERSLATE), 30, UniformIntProvider.create(2, 5), UniformFloatProvider.create(0.45F, 0.9F), 0.25F, UniformFloatProvider.create(2.0F, 5.0F), UniformFloatProvider.create(2.0F, 5.0F), ConstantFloatProvider.create(0.0F), 0, 0.0F)).range(Decorators.BOTTOM_TO_TOP_BELOW_120).spreadHorizontally().repeat(UniformIntProvider.create(16, 32));
 
+    public static final ConfiguredFeature<TreeFeatureConfig, ?> PALO_VERDE = Feature.TREE.configure(new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.ACACIA_LOG), new ForkingTrunkPlacer(5, 2, 2), BlockStateProvider.of(Blocks.ACACIA_LEAVES), new AcaciaFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0)), new TwoLayersFeatureSize(1, 0, 2)).ignoreVines().build());
+    public static final ConfiguredFeature<?, ?> PALO_VERDE_CHECKED = PALO_VERDE.wouldSurvive(Blocks.ACACIA_SAPLING);
+
     public static void register() {
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "blank"), BLANK);
 
@@ -194,5 +200,8 @@ public class ConfiguredFeatureRegistry {
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "jungle_caves_grass"), JUNGLE_CAVES_GRASS);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "sparse_water_delta"), SPARSE_WATER_DELTA);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "riverslate_rock"), RIVERSLATE_ROCK);
+
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "palo_verde"), PALO_VERDE);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(TerrainMod.MOD_ID, "palo_verde_checked"), PALO_VERDE_CHECKED);
     }
 }
