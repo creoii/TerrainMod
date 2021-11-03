@@ -5,6 +5,7 @@
     "terrain:glacite_stairs",
     "terrain:riverslate_stairs",
     "terrain:luminite_stairs",
-    "terrain:lavarock_stairs"
+    "terrain:lavarock_stairs",
+    "terrain:lavarock_brick_stairs"
   ]
 }

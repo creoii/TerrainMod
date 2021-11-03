@@ -5,6 +5,7 @@
     "terrain:glacite_wall",
     "terrain:riverslate_wall",
     "terrain:luminite_wall",
-    "terrain:lavarock_wall"
+    "terrain:lavarock_wall",
+    "terrain:lavarock_brick_wall"
   ]
 }

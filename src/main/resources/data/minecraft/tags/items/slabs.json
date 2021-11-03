@@ -5,6 +5,7 @@
     "terrain:glacite_slab",
     "terrain:riverslate_slab",
     "terrain:luminite_slab",
-    "terrain:lavarock_slab"
+    "terrain:lavarock_slab",
+    "terrain:lavarock_brick_slab"
   ]
 }
