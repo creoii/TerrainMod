@@ -9,7 +9,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class ItemRegistry {
-    public static final Item QUICKSAND_BUCKET = new QuicksandBucketItem(BlockRegistry.QUICKSAND, SoundEvents.BLOCK_SAND_PLACE, new Item.Settings().group(ItemGroup.DECORATIONS).maxCount(1));
+    public static final Item QUICKSAND_BUCKET = new QuicksandBucketItem(BlockRegistry.QUICKSAND, SoundEvents.BLOCK_SAND_PLACE, new Item.Settings().group(ItemGroup.MISC).maxCount(1));
 
     public static void register() {
         createItem("quicksand_bucket", QUICKSAND_BUCKET);
