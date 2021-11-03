@@ -21,6 +21,6 @@
     "terrain:riverslate_wall",
     "terrain:luminite_wall",
     "terrain:lavarock_wall",
-    "cooled_magma"
+    "terrain:cooled_magma"
   ]
 }
