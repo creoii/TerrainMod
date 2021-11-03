@@ -59,9 +59,8 @@ public class QuicksandBlock extends Block implements FluidDrainable {
     @SuppressWarnings("deprecation")
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         if (context instanceof EntityShapeContext entityShapeContext) {
-            Optional<Entity> optional = entityShapeContext.getEntity();
-            if (optional.isPresent()) {
-                Entity entity = optional.get();
+            Entity entity = entityShapeContext.getEntity();
+            if (entity != null) {
                 if (entity.fallDistance > 2.5F) return SHAPE;
 
                 boolean bl = entity instanceof FallingBlockEntity;

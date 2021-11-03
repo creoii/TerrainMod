@@ -68,13 +68,12 @@ public class MoltenMagmaBlock extends Block {
     @SuppressWarnings("deprecation")
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         if (context instanceof EntityShapeContext entityShapeContext) {
-            Optional<Entity> optional = entityShapeContext.getEntity();
-            if (optional.isPresent()) {
-                Entity entity = optional.get();
+            Entity entity = entityShapeContext.getEntity();
+            if (entity != null) {
                 if (entity.fallDistance > 2.5F) return SHAPE;
 
                 boolean bl = entity instanceof FallingBlockEntity;
-                if (bl || canWalkOnPowderSnow(entity) && context.isAbove(VoxelShapes.fullCube(), pos, false) && !context.isDescending()) {
+                if (bl || canWalkOnMoltenMagma(entity) && context.isAbove(VoxelShapes.fullCube(), pos, false) && !context.isDescending()) {
                     return super.getCollisionShape(state, world, pos, context);
                 }
             }
@@ -107,7 +106,7 @@ public class MoltenMagmaBlock extends Block {
         return VoxelShapes.empty();
     }
 
-    public static boolean canWalkOnPowderSnow(Entity entity) {
+    public static boolean canWalkOnMoltenMagma(Entity entity) {
         return entity.getType().isIn(EntityTypeTags.MOLTEN_MAGMA_WALKABLE) || entity instanceof LivingEntity && ((LivingEntity) entity).getEquippedStack(EquipmentSlot.FEET).isOf(Items.NETHERITE_BOOTS);
     }
 }

@@ -14,7 +14,9 @@ public class BiomeRegistry {
     public static Biome MOLTEN_CAVES;
     public static Biome ARID_CAVES;
     public static Biome CRYSTAL_CAVES;
+    //wip
     public static Biome JUNGLE_CAVES;
+    //MESA CAVES
 
     public static final RegistryKey<Biome> FRIGID_CAVES_KEY = RegistryKey.of(Registry.BIOME_KEY, new Identifier(TerrainMod.MOD_ID, "frigid_caves"));
     public static final RegistryKey<Biome> MUSHROOM_CAVES_KEY = RegistryKey.of(Registry.BIOME_KEY, new Identifier(TerrainMod.MOD_ID, "mushroom_caves"));

@@ -2,7 +2,7 @@ package creoii.terrain.block;
 
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
-import net.minecraft.class_6760;
+
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
@@ -18,6 +18,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
+import net.minecraft.world.tick.OrderedTick;
 import org.jetbrains.annotations.Nullable;
 
 public class CrystalFlowerBlock extends Block implements Waterloggable {
@@ -58,7 +59,7 @@ public class CrystalFlowerBlock extends Block implements Waterloggable {
     @SuppressWarnings("deprecation")
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         if (state.get(WATERLOGGED)) {
-            world.getFluidTickScheduler().method_39363(class_6760.method_39411(Fluids.WATER, pos, Fluids.WATER.getTickRate(world)));
+            world.getFluidTickScheduler().scheduleTick(OrderedTick.create(Fluids.WATER, pos, Fluids.WATER.getTickRate(world)));
         }
 
         return direction == (state.get(FACING)).getOpposite() && !state.canPlaceAt(world, pos) ? Blocks.AIR.getDefaultState() : super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
