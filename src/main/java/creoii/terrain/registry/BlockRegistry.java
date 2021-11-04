@@ -119,8 +119,8 @@ public class BlockRegistry {
         createBlock("stripped_palo_verde_log", STRIPPED_PALO_VERDE_LOG, ItemGroup.BUILDING_BLOCKS);
         createBlock("palo_verde_log", PALO_VERDE_LOG, ItemGroup.BUILDING_BLOCKS);
         createBlock("palo_verde_planks", PALO_VERDE_PLANKS, ItemGroup.BUILDING_BLOCKS);
-        createBlock("palo_verde_slab", PALO_VERDE_STAIRS, ItemGroup.BUILDING_BLOCKS);
-        createBlock("palo_verde_stairs", PALO_VERDE_SLAB, ItemGroup.BUILDING_BLOCKS);
+        createBlock("palo_verde_slab", PALO_VERDE_SLAB, ItemGroup.BUILDING_BLOCKS);
+        createBlock("palo_verde_stairs", PALO_VERDE_STAIRS, ItemGroup.BUILDING_BLOCKS);
         createBlock("palo_verde_leaves", PALO_VERDE_LEAVES, ItemGroup.DECORATIONS);
     }
 
