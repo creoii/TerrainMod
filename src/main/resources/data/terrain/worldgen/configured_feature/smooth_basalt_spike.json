@@ -1,0 +1,50 @@
+{
+  "config": {
+    "state": {
+      "state": {
+        "Name": "terrain:lavarock"
+      },
+      "type": "minecraft:simple_state_provider"
+    },
+    "wind_speed": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 0.0,
+        "max_exclusive": 0.25
+      }
+    },
+    "min_radius_for_wind": 7,
+    "min_bluntness_for_wind": 0.6,
+    "stalactite_bluntness": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 0.33,
+        "max_exclusive": 1.0
+      }
+    },
+    "stalagmite_bluntness": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 0.33,
+        "max_exclusive": 1.0
+      }
+    },
+    "floor_to_ceiling_search_range": 30,
+    "column_radius": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 5,
+        "max_inclusive": 9
+      }
+    },
+    "height_scale": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 0.4,
+        "max_exclusive": 1.2
+      }
+    },
+    "max_column_radius_to_cave_height_ratio": 0.25
+  },
+  "type": "terrain:block_spike"
+}

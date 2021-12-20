@@ -2,20 +2,17 @@
   "schemaVersion": 1,
   "id": "terrain",
   "version": "${version}",
-
   "name": "Terrain",
-  "description": "Adds cave biomes, hoping to add more in the future :D",
+  "description": "Adds cave biomes; hoping to add more in the future :D",
   "authors": [
-    "CreoII"
+    "Creoii"
   ],
   "contact": {
     "homepage": "https://fabricmc.net/",
     "sources": "https://github.com/creoii/TerrainMod"
   },
-
   "license": "CC0-1.0",
   "icon": "assets/terrain/icon.png",
-
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -27,10 +24,8 @@
   },
   "depends": {
     "fabricloader": ">=0.12.0",
-    "fabric": ">=0.36.1",
-    "minecraft": [
-      "1.18.x"
-    ],
-    "java": ">=16"
+    "fabric": "*",
+    "minecraft": "1.18.x",
+    "java": ">=17"
   }
 }

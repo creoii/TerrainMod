@@ -1,0 +1,22 @@
+{
+  "config": {
+    "contents": {
+      "Name": "terrain:glacite"
+    },
+    "rim": {
+      "Name": "terrain:glacite"
+    },
+    "size": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 5,
+        "max_inclusive": 9
+      }
+    },
+    "rim_size": {
+      "type": "minecraft:constant",
+      "value": 0
+    }
+  },
+  "type": "minecraft:delta_feature"
+}

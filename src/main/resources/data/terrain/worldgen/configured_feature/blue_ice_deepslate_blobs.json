@@ -1,0 +1,18 @@
+{
+  "config": {
+    "target": {
+      "Name": "minecraft:deepslate"
+    },
+    "state": {
+      "Name": "minecraft:blue_ice"
+    },
+    "radius": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 2,
+        "max_inclusive": 3
+      }
+    }
+  },
+  "type": "minecraft:netherrack_replace_blobs"
+}

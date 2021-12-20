@@ -1,0 +1,29 @@
+{
+  "config": {
+    "vegetation_chance": 0.5,
+    "xz_radius": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 6,
+        "max_inclusive": 8
+      }
+    },
+    "extra_edge_column_chance": 0.7,
+    "extra_bottom_block_chance": 0.5,
+    "vertical_range": 3,
+    "vegetation_feature": {
+      "feature": "terrain:none",
+      "placement": []
+    },
+    "surface": "floor",
+    "depth": 3,
+    "replaceable": "minecraft:lush_ground_replaceable",
+    "ground_state": {
+      "state": {
+        "Name": "minecraft:ice"
+      },
+      "type": "minecraft:simple_state_provider"
+    }
+  },
+  "type": "minecraft:vegetation_patch"
+}

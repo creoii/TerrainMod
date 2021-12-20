@@ -1,0 +1,28 @@
+{
+  "config": {
+    "contents": {
+      "Properties": {
+        "level": "0"
+      },
+      "Name": "minecraft:lava"
+    },
+    "rim": {
+      "Properties": {
+        "level": "0"
+      },
+      "Name": "minecraft:lava"
+    },
+    "size": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 4,
+        "max_inclusive": 8
+      }
+    },
+    "rim_size": {
+      "type": "minecraft:constant",
+      "value": 0
+    }
+  },
+  "type": "minecraft:delta_feature"
+}

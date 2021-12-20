@@ -1,0 +1,13 @@
+{
+  "config": {
+    "feature_true": {
+      "feature": "terrain:ice_pool",
+      "placement": []
+    },
+    "feature_false": {
+      "feature": "terrain:powder_snow_pool",
+      "placement": []
+    }
+  },
+  "type": "minecraft:random_boolean_selector"
+}

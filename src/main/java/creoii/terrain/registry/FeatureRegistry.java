@@ -2,6 +2,9 @@ package creoii.terrain.registry;
 
 import creoii.terrain.TerrainMod;
 import creoii.terrain.world.feature.*;
+import creoii.terrain.world.feature.config.BlockSpikeFeatureConfig;
+import creoii.terrain.world.feature.config.RockFeatureConfig;
+import creoii.terrain.world.feature.config.TwoSimpleBlocksFeatureConfig;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.feature.Feature;

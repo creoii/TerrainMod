@@ -1,6 +1,7 @@
 package creoii.terrain.world.feature;
 
 import com.mojang.serialization.Codec;
+import creoii.terrain.world.feature.config.BlockSpikeFeatureConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.tag.BlockTags;

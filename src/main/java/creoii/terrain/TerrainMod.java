@@ -1,7 +1,6 @@
 package creoii.terrain;
 
 import creoii.terrain.registry.*;
-import creoii.terrain.util.OverworldAdditions;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 
@@ -13,10 +12,6 @@ public class TerrainMod implements ModInitializer, ClientModInitializer {
 		BlockRegistry.register();
 		ItemRegistry.register();
 		FeatureRegistry.register();
-		ConfiguredFeatureRegistry.register();
-		BiomeRegistry.register();
-
-		OverworldAdditions.addFeatures();
 	}
 
 	@Override

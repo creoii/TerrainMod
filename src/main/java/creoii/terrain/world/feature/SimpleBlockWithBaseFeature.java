@@ -1,6 +1,7 @@
 package creoii.terrain.world.feature;
 
 import com.mojang.serialization.Codec;
+import creoii.terrain.world.feature.config.TwoSimpleBlocksFeatureConfig;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.TallPlantBlock;
 import net.minecraft.util.math.BlockPos;
